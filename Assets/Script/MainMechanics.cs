@@ -15,7 +15,11 @@ public class MainMechanics : MonoBehaviour
     public int maxTopping; // banyak topping maksimal pada 1x order
     public int maxIceCream; // banyak jenis eskrim maksimal pada 1x order
     public int money; // jumlah uang
+    public int moneyTarget;
+    public int day;
+
     public float cdCustomer; // cooldown sebelum ganti customer karena kelamaan
+    public float cdDay;
 
     public List<List<int>> orderReq = new List<List<int>>(); // menyimpan orderan customer
     public List<int> reqCup = new List<int>(); // menyimpan orderan jenis cup
@@ -40,16 +44,30 @@ public class MainMechanics : MonoBehaviour
     void Start()
     {
         Customer();
+        cdDay = 600f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        cdDay -= Time.deltaTime;
+        if (cdDay <= 0f)
+        {
+            ChangeDay();
+        }
+
         cdCustomer -= Time.deltaTime;
         if (cdCustomer <= 0f)
         {
             Customer();
         }
+    }
+
+    void ChangeDay()
+    {
+        cdDay = 600f;
+        moneyTarget = moneyTarget * 110 / 100;
+        day += 1;
     }
 
     // Dipanggil setiap berganti customer
