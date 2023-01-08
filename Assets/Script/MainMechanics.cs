@@ -78,15 +78,18 @@ public class MainMechanics : MonoBehaviour
         reqIceCream.Sort();
 
         // orderReq - T O P P I N G
-        toppingAmt = UnityEngine.Random.Range(0, maxTopping);
-        for (int i = 0; i <= toppingAmt; i++)
+        toppingAmt = UnityEngine.Random.Range(0, maxTopping + 1);
+        for (int i = 0; i < toppingAmt; i++)
         {
             reqTopping.Add(UnityEngine.Random.Range(0, topping.Length));
         }
         reqTopping.Sort();
 
         // orderReq - S Y R U P
-        reqSyrup.Add(UnityEngine.Random.Range(0, syrup.Length));
+        for (int i = 0; i < UnityEngine.Random.Range(0, 1); i++)
+        {
+            reqSyrup.Add(UnityEngine.Random.Range(0, syrup.Length));
+        }
 
         print("END");
 
