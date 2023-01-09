@@ -72,17 +72,32 @@ public class BoxMovement : MonoBehaviour
         }
     }
 
+    // public void DialogueBox()
+    // {
+    //     if (dialogueBox.GetComponent<RectTransform>().anchoredPosition.y == -989.2499f)
+    //     {
+    //         dialogueBox.GetComponent<RectTransform>().anchoredPosition = dialogueBoxDelta;
+    //         dialogueBoxEnter = true;
+    //     }
+    //     if (dialogueBox.GetComponent<RectTransform>().anchoredPosition.y == -450f)
+    //     {
+    //         dialogueBox.GetComponent<RectTransform>().anchoredPosition = dialogueBoxDelta;
+    //         dialogueBoxEnter = false;
+    //     }
+    // }
     public void DialogueBoxEnter()
     {
-        dialogueBoxDelta.y = -989.2499f;
-        dialogueBox.GetComponent<RectTransform>().anchoredPosition = dialogueBoxDelta;
+        dialogueBoxDelta.y = dialogueBox.GetComponent<RectTransform>().anchoredPosition.y;
+        // dialogueBoxDelta.y = -989.2499f;
+        // dialogueBox.GetComponent<RectTransform>().anchoredPosition = dialogueBoxDelta;
         dialogueBoxEnter = true;
     }
 
     public void DialogueBoxExit()
     {
-        dialogueBoxDelta.y = -450f;
-        dialogueBox.GetComponent<RectTransform>().anchoredPosition = dialogueBoxDelta;
+        dialogueBoxDelta.y = dialogueBox.GetComponent<RectTransform>().anchoredPosition.y;
+        // dialogueBoxDelta.y = -450f;
+        // dialogueBox.GetComponent<RectTransform>().anchoredPosition = dialogueBoxDelta;
         dialogueBoxEnter = false;
     }
 

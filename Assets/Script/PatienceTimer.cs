@@ -17,13 +17,13 @@ public class PatienceTimer : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (patienceTimer.value > (float)mm.cdCustomer)
-        {
-            patienceTimer.value -= Time.deltaTime;
-        }
-        if (patienceTimer.value < mm.cdCustomer)
-        {
-            patienceTimer.value = mm.cdCustomer;
-        }
+        // if (patienceTimer.value > (float)mm.cdCustomer)
+        // {
+        //     patienceTimer.value -= Time.deltaTime;
+        // }
+        // if (patienceTimer.value < mm.cdCustomer)
+        // {
+        //     patienceTimer.value = mm.cdCustomer;
+        // }
     }
 }

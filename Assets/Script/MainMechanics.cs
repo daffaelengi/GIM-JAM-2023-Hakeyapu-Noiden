@@ -28,12 +28,12 @@ public class MainMechanics : MonoBehaviour
 
     public float cdCustomerDelay; // delay in between customer
     public float cdCustomerReject; // countdown sebelum customer auto reject
-    public float cdCustomer; // countdown sebelum ganti customer karena kelamaan
+    public List<float> cdCustomer = new List<float>(); // countdown sebelum ganti customer karena kelamaan
     public float cdDay;
 
     public bool cdCustomerDelayCheck;
     public bool cdCustomerRejectCheck;
-    public bool cdCustomerCheck;
+    public List<bool> cdCustomerCheck = new List<bool>();
     public bool allowBackgroundOrder;
 
     public List<List<int>> orderReq = new List<List<int>>(); // menyimpan orderan customer
@@ -67,7 +67,7 @@ public class MainMechanics : MonoBehaviour
         cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
         cdCustomerDelayCheck = true;
         cdCustomerRejectCheck = false;
-        cdCustomerCheck = false;
+        // cdCustomerCheck = false;
         // cdCustomerReject = 5;
         cdDay = 600f;
 
@@ -114,21 +114,28 @@ public class MainMechanics : MonoBehaviour
         }
 
         // Countdown Customer
-        if (cdCustomerCheck == true && cdCustomer > 0)
+        for (int i = 0; i < orderList.Count; i++)
         {
-            cdCustomer -= Time.deltaTime;
-        }
-        else if (cdCustomerCheck == true)
-        {
-            cdCustomerCheck = false;
-            cdCustomer = 0;
-            if (allowBackgroundOrder == false)
+            print(orderList.Count);
+            if (cdCustomerCheck[i] == true && cdCustomer[i] > 0)
             {
-                cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
-                cdCustomerDelayCheck = true;
+                cdCustomer[i] -= Time.deltaTime;
+            }
+            else if (cdCustomerCheck[i] == true)
+            {
+                orderList.RemoveAt(0);
+                cdCustomerCheck[i] = false;
+                cdCustomerCheck.RemoveAt(0);
+                cdCustomer[i] = 0;
+                cdCustomer.RemoveAt(0);
+                break;
+                // if (allowBackgroundOrder == false)
+                // {
+                //     cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+                //     cdCustomerDelayCheck = true;
+                // }
             }
         }
-        
         // cdCustomer -= Time.deltaTime;
 
         // if (cdCustomerDelay == 0)
@@ -177,7 +184,6 @@ public class MainMechanics : MonoBehaviour
     void Customer()
     {
         orderTemp = "";
-        customerImg.SetActive(true);
 
         // Start Customer Reject Timer
         cdCustomerReject = 5f;
@@ -236,6 +242,7 @@ public class MainMechanics : MonoBehaviour
 
         bm.DialogueBoxEnter();
         rt.UpdateText();
+        customerImg.SetActive(true);
         acceptButton.SetActive(true);
         rejectButton.SetActive(true);
     }
@@ -265,7 +272,7 @@ public class MainMechanics : MonoBehaviour
         money += 5 + reqTopping.Count;
         
         // B O N U S  M O N E Y
-        if (cdCustomer >= 25f)
+        if (cdCustomer[0] >= 25f)
         {
             money += 1;
         }
@@ -289,8 +296,8 @@ public class MainMechanics : MonoBehaviour
     {
         orderList.Add(orderTemp);
         
-        cdCustomer = 30f;
-        cdCustomerCheck = true;
+        cdCustomer.Add(30f);
+        cdCustomerCheck.Add(true);
         cdCustomerReject = 0;
         cdCustomerRejectCheck = false;
         cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
@@ -328,10 +335,15 @@ public class MainMechanics : MonoBehaviour
                 cdCustomerReject = 0;
                 cdCustomerRejectCheck = false;
             }
+
+            customerImg.SetActive(false);
+            acceptButton.SetActive(false);
+            rejectButton.SetActive(false);
             
             place = 1;
             bm.OrderBoxEnter();
             bm.KitBoxEnter();
+            bm.DialogueBoxEnter();
         }
         else if (place == 1)
         {
@@ -344,6 +356,7 @@ public class MainMechanics : MonoBehaviour
             place = 0;
             bm.OrderBoxExit();
             bm.KitBoxExit();
+            bm.DialogueBoxExit();
         }
     }
 
