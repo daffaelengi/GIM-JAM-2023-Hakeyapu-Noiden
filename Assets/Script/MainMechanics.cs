@@ -6,6 +6,13 @@ using UnityEngine;
 public class MainMechanics : MonoBehaviour
 {
     public MakeText mt;
+    public RequestText rt;
+    public BoxMovement bm;
+
+    public GameObject acceptButton;
+    public GameObject rejectButton;
+    public GameObject customerImg;
+
     public string[] cup;
     public string[] variant; // menyimpan macam-macam variant ice cream
     public string[] topping; // menyimpan macam-macam topping
@@ -17,10 +24,17 @@ public class MainMechanics : MonoBehaviour
     public int money; // jumlah uang
     public int moneyTarget;
     public int day;
+    public int place; // 0 for cashier, 1 for ice cream making
 
-    public float cdCustomer; // cooldown sebelum ganti customer karena kelamaan
-    public float cdCustomerDelay;
+    public float cdCustomerDelay; // delay in between customer
+    public float cdCustomerReject; // countdown sebelum customer auto reject
+    public float cdCustomer; // countdown sebelum ganti customer karena kelamaan
     public float cdDay;
+
+    public bool cdCustomerDelayCheck;
+    public bool cdCustomerRejectCheck;
+    public bool cdCustomerCheck;
+    public bool allowBackgroundOrder;
 
     public List<List<int>> orderReq = new List<List<int>>(); // menyimpan orderan customer
     public List<int> reqCup = new List<int>(); // menyimpan orderan jenis cup
@@ -34,7 +48,8 @@ public class MainMechanics : MonoBehaviour
     public List<int> makeTopping = new List<int>(); // menyimpan buatan orderan jenis topping
     public List<int> makeSyrup = new List<int>(); // menyimpan buatan orderan jenis syrup
 
-    // 41v1v3vvv1v
+    public List<string> orderList = new List<string>();
+
 
     int toppingAmt; // menyimpan banyak topping yang diinginkan customer
     int icecreamAmt; // menyimpan banyak jenis eskrim pada 1x order customer
@@ -44,8 +59,27 @@ public class MainMechanics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Customer();
+        acceptButton.SetActive(false);
+        rejectButton.SetActive(false);
+        customerImg.SetActive(false);
+        place = 0;
+        
+        cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+        cdCustomerDelayCheck = true;
+        cdCustomerRejectCheck = false;
+        cdCustomerCheck = false;
+        // cdCustomerReject = 5;
         cdDay = 600f;
+
+        orderReq.Add(reqCup);
+        orderReq.Add(reqIceCream);
+        orderReq.Add(reqTopping);
+        orderReq.Add(reqSyrup);
+
+        orderMake.Add(makeCup);
+        orderMake.Add(makeIceCream);
+        orderMake.Add(makeTopping);
+        orderMake.Add(makeSyrup);
     }
 
     // Update is called once per frame
@@ -57,11 +91,78 @@ public class MainMechanics : MonoBehaviour
             ChangeDay();
         }
 
-        cdCustomer -= Time.deltaTime;
-        if (cdCustomer <= -cdCustomerDelay)
+        // Countdown Customer Delay
+        if (cdCustomerDelayCheck == true && cdCustomerDelay > 0)
+        {
+            cdCustomerDelay -= Time.deltaTime;
+        }
+        else if (cdCustomerDelayCheck == true)
         {
             Customer();
         }
+
+        // Countdown Customer Reject
+        if (cdCustomerRejectCheck == true && cdCustomerReject > 0)
+        {
+            cdCustomerReject -= Time.deltaTime;
+        }
+        else if (cdCustomerRejectCheck == true)
+        {
+            RejectOrder();
+            // cdCustomerRejectCheck = false;
+            // cdCustomerReject = 0;
+        }
+
+        // Countdown Customer
+        if (cdCustomerCheck == true && cdCustomer > 0)
+        {
+            cdCustomer -= Time.deltaTime;
+        }
+        else if (cdCustomerCheck == true)
+        {
+            cdCustomerCheck = false;
+            cdCustomer = 0;
+            if (allowBackgroundOrder == false)
+            {
+                cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+                cdCustomerDelayCheck = true;
+            }
+        }
+        
+        // cdCustomer -= Time.deltaTime;
+
+        // if (cdCustomerDelay == 0)
+        // {
+        //     Customer();
+        // }
+        // else
+        // {
+        //     cdCustomerDelay -= Time.deltaTime;
+        // }
+
+        // cdCustomerReject -= Time.deltaTime;
+        // else if (cdCustomerReject <= 0)
+        // {
+        //     cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+        //     RejectOrder();
+        // }
+
+        // if (cdCustomerDelay <= 0)
+        // {
+        //     cdCustomerDelay = 0;
+        //     if (cdCustomerReject <= 0)
+        //     {
+        //         cdCustomerReject = 0;
+        //     }
+        //     else
+        //     {
+        //         cdCustomerReject -= Time.deltaTime;
+        //     }
+        // }
+        // else
+        // {
+        //     cdCustomerDelay -= Time.deltaTime;
+        // }
     }
 
     void ChangeDay()
@@ -72,24 +173,44 @@ public class MainMechanics : MonoBehaviour
     }
 
     // Dipanggil setiap berganti customer
+    string orderTemp;
     void Customer()
     {
-        cdCustomer = 30f;
+        orderTemp = "";
+        customerImg.SetActive(true);
+
+        // Start Customer Reject Timer
+        cdCustomerReject = 5f;
+        cdCustomerRejectCheck = true;
+
+        // Stop Customer Delay Timer
+        cdCustomerDelayCheck = false;
+        cdCustomerDelay = 0;
 
         // Clear Previous Order
-        orderMake.Clear();
-        orderReq.Clear();
+        // orderMake.Clear();
+        // orderReq.Clear();
         reqCup.Clear();
         reqIceCream.Clear();
         reqTopping.Clear();
         reqSyrup.Clear();
-        Trash();
+        // Trash();
+
+        // randomize customer type
+        if (UnityEngine.Random.Range(0, 2) == 0)
+        {
+            orderTemp += "F";
+        }
+        else
+        {
+            orderTemp += "M";
+        }
 
         // orderReq - C U P
         reqCup.Add(UnityEngine.Random.Range(0, cup.Length));
 
         // orderReq - I C E C R E A M
-        icecreamAmt = UnityEngine.Random.Range(1, maxIceCream);
+        icecreamAmt = UnityEngine.Random.Range(1, maxIceCream + 1);
         for (int i = 1; i <= icecreamAmt; i++)
         {
             reqIceCream.Add(UnityEngine.Random.Range(0, variant.Length));
@@ -105,31 +226,23 @@ public class MainMechanics : MonoBehaviour
         reqTopping.Sort();
 
         // orderReq - S Y R U P
-        for (int i = 0; i < UnityEngine.Random.Range(0, 1); i++)
+        for (int i = 0; i < UnityEngine.Random.Range(0, 2); i++)
         {
             reqSyrup.Add(UnityEngine.Random.Range(0, syrup.Length));
         }
 
-        print("END");
 
-        // In-Between Customer Delay
-        cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+        orderTemp += StringWriter(orderReq);
 
-        RequestOrder();
+        bm.DialogueBoxEnter();
+        rt.UpdateText();
+        acceptButton.SetActive(true);
+        rejectButton.SetActive(true);
     }
 
-    void RequestOrder()
-    {
-        orderReq.Add(reqCup);
-        orderReq.Add(reqIceCream);
-        orderReq.Add(reqTopping);
-        orderReq.Add(reqSyrup);
-
-        orderMake.Add(makeCup);
-        orderMake.Add(makeIceCream);
-        orderMake.Add(makeTopping);
-        orderMake.Add(makeSyrup);
-    }
+    // void RequestOrder()
+    // {
+    // }
 
     bool CheckOrder(List<int> reqList, List<int> makeList)
     {
@@ -171,6 +284,68 @@ public class MainMechanics : MonoBehaviour
     // {
     //     orderMake.Add(num);
     // }
+
+    public void AcceptOrder()
+    {
+        orderList.Add(orderTemp);
+        
+        cdCustomer = 30f;
+        cdCustomerCheck = true;
+        cdCustomerReject = 0;
+        cdCustomerRejectCheck = false;
+        cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+        cdCustomerDelayCheck = true;
+
+        bm.DialogueBoxExit();
+        acceptButton.SetActive(false);
+        rejectButton.SetActive(false);
+        customerImg.SetActive(false);
+        // RequestOrder();
+    }
+
+    public void RejectOrder()
+    {
+        rt.ClearText();
+        cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+        cdCustomerDelayCheck = true;
+        cdCustomerReject = 0;
+        cdCustomerRejectCheck = false;
+        bm.DialogueBoxExit();
+        acceptButton.SetActive(false);
+        rejectButton.SetActive(false);
+        customerImg.SetActive(false);
+    }
+
+    // Dipanggil untuk berpindah-pindah lokasi
+    public void SwitchPlace()
+    {
+        if (place == 0)
+        {
+            if (allowBackgroundOrder == false)
+            {
+                cdCustomerDelay = 0;
+                cdCustomerDelayCheck = false;
+                cdCustomerReject = 0;
+                cdCustomerRejectCheck = false;
+            }
+            
+            place = 1;
+            bm.OrderBoxEnter();
+            bm.KitBoxEnter();
+        }
+        else if (place == 1)
+        {
+            if (allowBackgroundOrder == false)
+            {
+                cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+                cdCustomerDelayCheck = true;
+            }
+
+            place = 0;
+            bm.OrderBoxExit();
+            bm.KitBoxExit();
+        }
+    }
 
     // Dipanggil setiap menambah sesuatu pada orderan yang sedang dibuat
     public void AddCup(int num)
@@ -243,6 +418,7 @@ public class MainMechanics : MonoBehaviour
                 slotCheck[0] = 1;
                 // print("A");
                 slot[0] = StringWriter(orderMake);
+                print(StringWriter(orderMake));
                 if (slot[0] == "40000")
                 {
                     slotCheck[0] = 0;
@@ -336,26 +512,58 @@ public class MainMechanics : MonoBehaviour
     }
 
     // Dipanggil setiap menyelesaikan pesanan untuk mengecek kesesuaian pesanan
-    public void Done()
+    public void Done(int num)
     {
-        if (reqCup.Count != makeCup.Count || reqIceCream.Count != makeIceCream.Count || reqTopping.Count != makeTopping.Count || reqSyrup.Count != makeSyrup.Count)
+        // if (reqCup.Count != makeCup.Count || reqIceCream.Count != makeIceCream.Count || reqTopping.Count != makeTopping.Count || reqSyrup.Count != makeSyrup.Count)
+        // {
+        //     orderMake.Clear();
+        // }
+        // else if (CheckOrder(reqCup, makeCup) == true && CheckOrder(reqIceCream, makeIceCream) == true && CheckOrder(reqTopping, makeTopping) == true && CheckOrder(reqSyrup, makeSyrup) == true)
+        // {
+        //     GetMoney();
+        //     Customer();
+        // }
+        // else
+        // {
+        //     orderMake.Clear();
+        //     // orderReq.Clear();
+        //     // reqCup.Clear();
+        //     // reqIceCream.Clear();
+        //     // reqTopping.Clear();
+        //     // reqSyrup.Clear();
+        // }
+
+        if (orderList[num].Remove(0, 1) == StringWriter(orderMake))
         {
-            orderMake.Clear();
-        }
-        else if (CheckOrder(reqCup, makeCup) == true && CheckOrder(reqIceCream, makeIceCream) == true && CheckOrder(reqTopping, makeTopping) == true && CheckOrder(reqSyrup, makeSyrup) == true)
-        {
+            print("correct");
+            Trash();
             GetMoney();
-            Customer();
+            orderList.RemoveAt(0);
+
+            SwitchPlace();
+            rt.ClearText();
+            cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
+            cdCustomerDelayCheck = true;
+            cdCustomerReject = 0;
+            cdCustomerRejectCheck = false;
+            bm.DialogueBoxExit();
+            acceptButton.SetActive(false);
+            rejectButton.SetActive(false);
+            customerImg.SetActive(false);
+            // Customer();
         }
         else
         {
-            orderMake.Clear();
+            print("wrong");
+            // orderMake.Clear();
             // orderReq.Clear();
             // reqCup.Clear();
             // reqIceCream.Clear();
             // reqTopping.Clear();
             // reqSyrup.Clear();
         }
+
+
         // for (int i = 0; i < orderReq.Count; i++)
         // {
         //     if (orderReq[i] != orderMake[i] || orderReq.Count != orderMake.Count)

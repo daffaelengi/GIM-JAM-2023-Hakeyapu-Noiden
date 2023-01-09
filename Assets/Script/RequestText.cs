@@ -30,7 +30,28 @@ public class RequestText : MonoBehaviour
         {
             topping += " + " + Convert.ToString(mm.topping[item]);
         }
-        textUI.text = Convert.ToString(mm.cup[mm.reqCup[0]]) + cream + topping + " + " + Convert.ToString(mm.syrup[mm.reqSyrup[0]]);
+
+        if (mm.reqTopping.Count != 0 && mm.reqSyrup.Count != 0)
+        {
+            textUI.text = Convert.ToString(mm.cup[mm.reqCup[0]]) + cream + topping + " + " + Convert.ToString(mm.syrup[mm.reqSyrup[0]]);
+        }
+        else if (mm.reqTopping.Count != 0)
+        {
+            textUI.text = Convert.ToString(mm.cup[mm.reqCup[0]]) + cream + topping;
+        }
+        else if (mm.reqSyrup.Count != 0)
+        {
+            textUI.text = Convert.ToString(mm.cup[mm.reqCup[0]]) + cream + " + " + Convert.ToString(mm.syrup[mm.reqSyrup[0]]);
+        }
+        else
+        {
+            textUI.text = Convert.ToString(mm.cup[mm.reqCup[0]]) + cream;
+        }
+    }
+
+    public void ClearText()
+    {
+        textUI.text = "";
     }
 
     // Update is called once per frame
