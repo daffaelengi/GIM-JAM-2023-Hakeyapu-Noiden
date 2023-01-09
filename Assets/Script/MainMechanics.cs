@@ -19,6 +19,7 @@ public class MainMechanics : MonoBehaviour
     public int day;
 
     public float cdCustomer; // cooldown sebelum ganti customer karena kelamaan
+    public float cdCustomerDelay;
     public float cdDay;
 
     public List<List<int>> orderReq = new List<List<int>>(); // menyimpan orderan customer
@@ -57,7 +58,7 @@ public class MainMechanics : MonoBehaviour
         }
 
         cdCustomer -= Time.deltaTime;
-        if (cdCustomer <= 0f)
+        if (cdCustomer <= -cdCustomerDelay)
         {
             Customer();
         }
@@ -110,6 +111,9 @@ public class MainMechanics : MonoBehaviour
         }
 
         print("END");
+
+        // In-Between Customer Delay
+        cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
 
         RequestOrder();
     }
@@ -239,6 +243,10 @@ public class MainMechanics : MonoBehaviour
                 slotCheck[0] = 1;
                 // print("A");
                 slot[0] = StringWriter(orderMake);
+                if (slot[0] == "40000")
+                {
+                    slotCheck[0] = 0;
+                }
                 Trash();
             }
             else
@@ -246,8 +254,47 @@ public class MainMechanics : MonoBehaviour
                 slotCheck[0] = 0;
                 StringReader(slot[0], orderMake);
                 mt.UpdateText(5);
+            }  
+        }
+        if (num == 2)
+        {
+            if (slotCheck[1] == 0)
+            {
+                slotCheck[1] = 1;
+                // print("A");
+                slot[1] = StringWriter(orderMake);
+                if (slot[1] == "40000")
+                {
+                    slotCheck[1] = 0;
+                }
+                Trash();
             }
-            
+            else
+            {
+                slotCheck[1] = 0;
+                StringReader(slot[1], orderMake);
+                mt.UpdateText(5);
+            }  
+        }
+        if (num == 3)
+        {
+            if (slotCheck[2] == 0)
+            {
+                slotCheck[2] = 1;
+                // print("A");
+                slot[2] = StringWriter(orderMake);
+                if (slot[2] == "40000")
+                {
+                    slotCheck[2] = 0;
+                }
+                Trash();
+            }
+            else
+            {
+                slotCheck[2] = 0;
+                StringReader(slot[2], orderMake);
+                mt.UpdateText(5);
+            }  
         }
         // if (num == 2)
         // {
