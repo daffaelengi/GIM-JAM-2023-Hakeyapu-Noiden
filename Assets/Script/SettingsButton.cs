@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SettingsButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private static string previousScene;  // static biar gak berubah saat pindah scene
     public static bool isHovered = false;
 
     [SerializeField] private Button button;
@@ -20,8 +21,16 @@ public class SettingsButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void OnButtonClick()
     {
-        // Load the specified scene
-        SceneManager.LoadScene(sceneName);
+        // Check the current scene
+        if (SceneManager.GetActiveScene().name != sceneName)
+        {
+            previousScene = SceneManager.GetActiveScene().name;  // mengambil scene saat ini sebelum pindah
+            SceneManager.LoadScene(sceneName);
+        }
+
+        else
+            // jika udah di menu pengaturan terus mencet lagi, balik ke scene sebelumnya
+            SceneManager.LoadScene(previousScene);
     }
 
     public void OnPointerEnter(PointerEventData _eventData)
@@ -33,4 +42,5 @@ public class SettingsButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         isHovered = false;
     }
+
 }
