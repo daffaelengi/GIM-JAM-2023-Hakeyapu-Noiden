@@ -9,7 +9,15 @@ public class DialogueSystem : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
-    private int index;
+    [SerializeField] private static int part = 0;
+    [SerializeField] private static int index = 0;
+
+    public string[] prologueLines;
+    public string[] part1Lines;
+    public string[] part2Lines;
+    public string[] part3Lines;
+    public string[] part4Lines;
+    
     
     void Start()
     {
@@ -36,16 +44,16 @@ public class DialogueSystem : MonoBehaviour
 
     void StartDialogue()
     {
-        index = 0;
+        getPart();
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
         // nulis karakter satu demi satu
-        foreach (char letter in lines[index].ToCharArray())
+        foreach (char c in lines[index].ToCharArray())
         {
-            textComponent.text += letter;
+            textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
     }
@@ -60,7 +68,25 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            part++;
+            index = 0;
+            textComponent.text = string.Empty;
+            StartDialogue();
         }
+    }
+    
+
+    void getPart()
+    {
+        if (part == 0)
+            lines = prologueLines;
+        else if (part == 1)
+            lines = part1Lines;
+        else if (part == 2)
+            lines = part2Lines;
+        else if (part == 3)
+            lines = part3Lines;
+        else if (part == 4)
+            lines = part4Lines;
     }
 }

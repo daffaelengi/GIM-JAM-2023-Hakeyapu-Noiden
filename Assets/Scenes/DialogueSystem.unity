@@ -354,10 +354,166 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1313541575}
-  lines:
-  - idi nakhuy
-  - suka blyat
-  textSpeed: 0.1
+  lines: []
+  textSpeed: 0.05
+  prologueLines:
+  - Kocokue, sebuah toko es krim yang kini sedang populer di Negara Wakanda. Cabangnya
+    menjamur di berbagai sudut, dan hingga kini masyarakat Wakanda belum menunjukkan
+    kejenuhannya terhadap toko es krim yang satu ini.
+  - 'Kisah ini mengambil sudut pandang dari salah satu pegawai toko Kocokue yang
+    tak ingin disebutkan namanya. Hari-hari berlalu, berbagai macam pelanggan datang
+    dan memesan. Tentu saja, berbagai jenis pelanggan datang, bahkan bisa jadi sosok
+    tak terduga dapat muncul pula.  '
+  - 'Bagaimana kalau sosok yang datang itu merupakan sosok istimewa yang sering menghiasi
+    linimasa media sosialmu? '
+  part1Lines:
+  - "Setelah bunyi bel \u201CBing Chiling\u201D yang selalu kudengar di tengah suasana
+    keramaian, muncullah suatu sosok yang familiar."
+  - "\u201CSilahkan Kak, ingin order apa?\u201D "
+  - "???: \u201CKamu nanyaaee?\u201D"
+  - "???: \"Biar aku kasih tau ya! Aku tuh maunya es cepmek yae!\u201D"
+  - "Oh ternyata Dilan si Cepmek\u2026"
+  - "\u201CEs cepmek..? Emm, maaf kami tidak menjualnya di sini\u2026\u201D "
+  - "Dilan Cepmek: \u201CNT kadang kadang NT ya! Cepmek tuh cepak mekar yae! Cepak
+    meeekar.\u201D"
+  - "\u201CGak ada yang nanyaee.\u201D "
+  - "Dilan Cepmek: \"...Ah ya sudah. Karena gak ada es Cepmek yae, saya mau pesan\u2026\" "
+  - 'Syukurlah, akhirnya si Dilan Cepmek ini tidak Cepmek-an lagi. '
+  - "\u201CItu saja pesanannya?\u201D "
+  - "Dilan Cepmek: \u201CKamu nanyaaee? Ya sudah, biar aku kasih tau ya!\u201D "
+  - "\u201CGak usah, makasih.\u201D"
+  - "Dilan Cepmek: \u201CEh bentar, ini saya mau pakai voucher-nya.\u201D"
+  - "\u201CSip. Ngomong-ngomong, saya penasaran. Rambut model Kak Dilan gimana cara
+    dirawatnya ya?\u201D "
+  - "Dilan Cepmek: \u201COh ini. Model rambut  Cepmek yae, cepak mekar! Ini mah aku
+    rawat biasa aja yae. Gak yang terlalu gimana gitu.\u201D "
+  - "ilan Cepmek: \u201CEs krimnya masih lama gak ya?\u201D "
+  - "Dilan Cepmek: \u201CAku soalnya harus buru-buru ke tempat lain. Mau shooting
+    buat lagu baru.\u201D"
+  - "\u201CKamu bertanyaaee-tanyaee?\u201D "
+  - "\u201CNah, semangat dengan lagu barunya.\u201D "
+  - "Dilan Cepmek: \u201CWah, terima kasih!\u201D"
+  - 'Aku melihatnya segera bergegas menuju pintu keluar sambil memakan es krim yang
+    baru saja kuberikan.  '
+  - 'Memang nada suaranya terkadang membuat sedikit kesal, tetapi setidaknya senyumannya
+    bisa membuatku bertahan lebih lama lagi di sini.  '
+  part2Lines:
+  - "\u201CSelamat datang di Kocokue, apa yang menjadi order hari ini?\u201D "
+  - "Dilan Cepmek: \u201CKamu nanyaaee? Aku mau es yang itu dong.\u201D "
+  - "\u201CAh maaf, untuk yang itu sedang habis stoknya.\u201D "
+  - "Dilan Cepmek: \u201CNT kadang kadang NT yae. Okeh, kalau begitu aku maunya yang
+    kayak kemarin aja yae.\u201D "
+  - "\u201CEs Cepmek?\u201D "
+  - "Dilan Cepmek: \u201CBukan! Biar aku kasih tahu ya!\u201D "
+  - "\u201CNah, es krimnya. Eh ngomong-ngomong\u2026\u201D"
+  - "\u201CMas Cepmek tumben banget gak pakai jaket.\u201D "
+  - "\u201CLagi mau ngikutin tren OOTD (Outfit of the Day) yae?\u201D"
+  - "Dilan Cepmek: \u201COh nggak\u2026 Emm, lagi dicuci aja, jaketnya.\u201D "
+  - "Lho, bukannya Mas Cepmek ada jaket lain ya\u2026? "
+  - "\u201COh gitu\u2026\u201D "
+  - "Dilan Cepmek: \u201CIya. Asal kamu tahu yaee, jaket yang lainnya juga sedang
+    dicari yae. Rawr.\u201D "
+  - "\u201CDicari..? Karena?\u201D "
+  - "Dilan Cepmek: \u201CKamu nanyaaee? Kamu bertanyaaee-tanyaaee?\u201D "
+  - "\u201CT, Terima kasih.\u201D "
+  - 'Selesainya dari shift-ku, tidak terasa hari pun berubah menjadi malam.  '
+  - "\u201CHuh\u2026 Entah kenapa hari ini Mas Cepmek rada sus.\u201D "
+  - 'Aku menghidupkan HP-ku untuk menonton live yang dikatakan oleh Dilan si Cepmek. '
+  - "Tetapi\u2026 Aku tidak bisa menemukan apa-apa tentang jaketnya. "
+  part3Lines:
+  - 'Kejadian kemarin masih sedikit terngiang di balik benakku.  Tapi, kehidupan
+    harus tetap berjalan.  Lagipula aneh juga kalau aku meminta izin kerja hanya
+    karena terkejut melihat Dilan Cepmek yang tidak memakai jaket Dilan sehingga
+    kini berubah menjadi Ga Pake Jaket Dilan Cepmek.  '
+  - "\u201CSelamat datang di Kocokue\u2013 Oh, Mas Cepmek. Kayak biasa?\u201D  "
+  - 'Ternyata dia sudah menggunakan lagi jaketnya.  '
+  - "Dilan Cepmek: \u201CKamu na\u2013\u201D  "
+  - "\u201COke, ditunggu, ya.\u201D  "
+  - 'Aku memberikan es krim pesanan Dilan Cepmek, dan ia membayarnya lagi seperti
+    biasa. Kali ini, ia duduk sebentar di salah satu kursi kosong yang ada di pojok
+    ruangan.  '
+  - 'Tentu saja aku tidak memperhatikannya lama-lama. Bukan urusanku. Tapi, beberapa
+    pelanggan lain nampak sibuk mengeluarkan ponsel mereka sambil mengambil satu
+    atau dua foto. Bahkan ada beberapa yang mengajaknya memotret.  '
+  - 'Ya sudahlah.  '
+  - 'Tanpa sadar, hari ini sudah berlalu lagi.  '
+  - "Pelanggan: \u201CEhm, permisi, Mas.\u201D  "
+  - 'Pelanggan itu menyerahkan sebuah ponsel kepadaku. Maksudnya dia mau menunjukkan
+    gambar pesanan? Atau apa?  '
+  - "Pelanggan: \u201CTadi HP ini ada di atas meja sana. Mungkin punya pelanggan,
+    ya?\u201D"
+  - 'Pelanggan itu menunjuk ke salah satu meja di pojok ruangan, meja yang ditempati
+    oleh Dilan Cepmek tadi. Aku menyalakan layarnya, namun tak menemukan petunjuk
+    berarti. HP ini juga diberi kata sandi.  '
+  - "\u201CTerima kasih, Mba. Akan kami simpan dahulu sampai pemiliknya kembali.\u201D  "
+  - 'Ternyata masih banyak orang baik. Kalau dia mau, bisa saja ia membawa pergi
+    HP tersebut dan tidak kembali lagi.  '
+  - 'Nah, sekarang. Apakah benar ini HP milik Dilan Cepmek?  '
+  - 'Mungkin saja salah, mungkin saja benar. Tapi mungkin tak ada salahnya kalau
+    aku mencoba menghubunginya melalui media sosialnya. Aku akan mengirimkan dm sambil
+    menyertakan foto HP ini.  '
+  - "\u201CSelamat sore, saya pegawai Kocokue cabang XX tempat biasanya Anda datang.
+    Saya mendapatkan laporan bahwa ada ponsel yang tertinggal, dan seingat saya Andalah
+    yang duduk di sana terakhir kali. Apabila ini benar milik Anda, Anda bisa kembali
+    \u2026.\u201D  "
+  - 'Formal sekali. Akhirnya pelajaran bahasa Indonesiaku berguna.  '
+  - 'Tanpa ragu, aku mengirimkan pesan tersebut layaknya content creator yang ingin
+    mengajak Dilan Cepmek untuk collab.  '
+  - Bisa saja dia menganggap pesan dariku adalah penipuan.
+  - 'Setidaknya, aku sudah mencoba.  '
+  part4Lines:
+  - 'Shift-ku siang ini telah selesai. DM-ku sama sekali masih belum dijawab. '
+  - Kalau dipikir, ya kan HP-nya ada di sini. Tapi aku pikir mungkin ia akan login
+    menggunakan device lain atau semacamnya sehingga dia bisa membaca pesanku.
+  - 'Setelah mencari tahu alamatnya (aku bukan stalker, percayalah), akhirnya aku
+    memutuskan untuk mendatangi alamat tersebut dengan niat baik.  '
+  - 'Jalannya agak sempit, untung aku tidak membawa motor ke sini. '
+  - 'Aku bertanya kepada beberapa orang di sekitar sambil memperlihatkan foto si
+    Dilan Cepmek atau Alif Cepmek itu.  '
+  - 'Awalnya mereka nampak enggan memberitahukan alamat lengkapnya kepadaku. Wajar
+    saja, mungkin mereka takut aku hanyalah salah satu dari penggemar beratnya yang
+    entah akan melakukan apa kalau sampai tahu tempat tinggalnya. Begitu aku menjelaskan
+    bahwa aku berniat mengembalikan HP-nya, barulah mereka bersedia.  '
+  - Begitu sampai di gang yang ditunjukkan oleh warga tadi, hujan mulai turun. Tentunya
+    aku selalu sedia payung sebelum hujan, namun aku tetap tidak suka melihat sepatuku
+    nanti kotor karena lumpur.
+  - Samar-samar dari kejauhan, aku melihat cahaya redup di tengah jemuran-jemuran
+    pakaian yang menggantung di balik atap.
+  - 'Tak lama, aku menemukan si Alif Cepmek dengan satu orang lagi yang tak aku kenali
+    wajahnya.  '
+  - "Dilan Cepmek: \u201CNgapain anying?\u201D"
+  - "???: \u201CKamu nanyaee?\u201D  "
+  - "Dilan Cepmek: \u201CKamu nanyaee, kamu nanyaee, diem anying gue lagi jualan,
+    tolol.\u201D  "
+  - "???: \u201CKamu bertanyaee-tanyaee???\u201D  "
+  - 'Aku terdiam sejenak, menunggu hingga Dilan Cepmek menyelesaikan live-nya pada
+    hari itu. Ia menyadari keberadaanku, memberikan gestur agar aku menunggu sejenak.  '
+  - "Dilan Cepmek: \u201CKenapa, ya? Saya engga lupa bayar es krim\u2019kan?\u201D"
+  - "\u201CEngga. Ini, HP-nya ketinggalan kemaren-kemaren.\u201D  "
+  - 'Dilan Cepmek menatapku sejenak nampak tak percaya, lalu menerima HP-nya. Ia
+    membolak-baliknya sejenak, kemudian menyalakannya untuk memastikan bahwa benar
+    itu miliknya.  '
+  - "Dilan Cepmek: \u201CMakasih banyak, ya. Woi, HP lo udah gak gue butuhin lagi.\u201D "
+  - 'Dilan Cepmek nampak mengotak-atik sejenak HP yang sebelumnya ia gunakan untuk
+    live, sebelum menyerahkannya kepada orang yang tak aku kenal itu.   '
+  - Kepengapan dan kesempitan gang kecil ini bukanlah sesuatu yang mengganjal di
+    hatiku.
+  - "\u201CKalo gitu, saya permisi dulu, ya.\u201D  "
+  - Akhirnya aku memutuskan untuk berpamitan, tidak mengganggu lebih lama lagi.
+  - "Dilan Cepmek: \u201COh iya, sekali lagi makasih banyak, lho!\u201D  "
+  - "Dilan Cepmek: \u201CGatau lagi saya kalo HP ini ga balik gimana.\u201D  "
+  - "\u201CSukses terus, Alif Cepmek.\u201D "
+  - "Dilan Cepmek: \u201CEh kenapa tadi?\u201D  "
+  - "\u201CKamu nanyaee???\u201D"
+  - 'Dilan Cepmek terdiam, sebelum akhirnya tertawa. Aku berpamitan juga dengan orang
+    yang mungkin temannya itu, lalu pergi dan bersiap menghadapi hari-hariku yang
+    biasa lagi.  '
+  - Terkadang, apa yang kita lihat bukanlah apa yang sebenarnya.
+  - Kita manusia hanyalah aktor yang memiliki berbagai panggung di dunia ini.
+  - 'Jadi apa kita di setiap panggung itu, semuanya terserah kepada kita.  '
+  - 'Tak jarang, banyak orang yang membangun perannya sendiri untuk mencari sedikit
+    rezeki.  '
+  - 'Yah, aku sedikit kagum padanya.  '
 --- !u!1 &1510751861
 GameObject:
   m_ObjectHideFlags: 0
