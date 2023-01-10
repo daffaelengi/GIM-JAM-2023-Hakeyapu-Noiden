@@ -91,6 +91,13 @@ public class MainMechanics : MonoBehaviour
         {
             UpdateOrderBox(orderList[0].Remove(0, 1));
         }
+        else
+        {
+            ic.ChangeCupOrder(ic.cupOrderSprite.Length-1);
+            ic.ChangeIceCreamOrder(ic.icecreamOrderSprite.Length-1);
+            ic.ChangeToppingOrder(ic.toppingOrderSprite.Length-1);
+            ic.ChangeSyrupOrder(ic.syrupOrderSprite.Length-1);
+        }
 
         cdDay -= Time.deltaTime;
         if (cdDay <= 0f)
@@ -257,6 +264,11 @@ public class MainMechanics : MonoBehaviour
         customerImg.SetActive(true);
         acceptButton.SetActive(true);
         rejectButton.SetActive(true);
+
+        if (orderTemp != "")
+        {
+            ic.ChangeCustomer(Convert.ToString(orderTemp[0]), 0);
+        }
     }
 
     // void RequestOrder()

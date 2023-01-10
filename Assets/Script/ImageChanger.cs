@@ -10,11 +10,14 @@ public class ImageChanger : MonoBehaviour
     public Image icecreamOrder;
     public Image toppingOrder;
     public Image syrupOrder;
+    public Image customer;
     public Sprite[] backgroundSprite;
     public Sprite[] cupOrderSprite;
     public Sprite[] icecreamOrderSprite;
     public Sprite[] toppingOrderSprite;
     public Sprite[] syrupOrderSprite;
+    public Sprite[] customerMaleSprite;
+    public Sprite[] customerFemaleSprite;
     public float backgroundDelay;
     public float timer;
     public bool timerEnabled = false;
@@ -56,25 +59,37 @@ public class ImageChanger : MonoBehaviour
 
     public void ChangeCupOrder(int index)
     {
-        print(index);
+        // print(index);
         cupOrder.sprite = cupOrderSprite[index];
     }
 
     public void ChangeIceCreamOrder(int index)
     {
-        print(index);
+        // print(index);
         icecreamOrder.sprite = icecreamOrderSprite[index];
     }
 
     public void ChangeToppingOrder(int index)
     {
-        print(index);
+        // print(index);
         toppingOrder.sprite = toppingOrderSprite[index];
     }
 
     public void ChangeSyrupOrder(int index)
     {
-        print(index);
+        // print(index);
         syrupOrder.sprite = syrupOrderSprite[index];
+    }
+
+    public void ChangeCustomer(string type, int expression)
+    {
+        if (type == "M")
+        {
+            customer.sprite = customerMaleSprite[expression];
+        }
+        if (type == "F")
+        {
+            customer.sprite = customerFemaleSprite[expression];
+        }
     }
 }
