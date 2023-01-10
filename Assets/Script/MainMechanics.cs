@@ -8,6 +8,9 @@ public class MainMechanics : MonoBehaviour
     public MakeText mt;
     public RequestText rt;
     public BoxMovement bm;
+    public ImageChanger ic;
+
+    public Animator transition;
 
     public GameObject acceptButton;
     public GameObject rejectButton;
@@ -64,8 +67,7 @@ public class MainMechanics : MonoBehaviour
         customerImg.SetActive(false);
         place = 0;
         
-        cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
-        cdCustomerDelayCheck = true;
+        StartCustomerDelay();
         cdCustomerRejectCheck = false;
         // cdCustomerCheck = false;
         // cdCustomerReject = 5;
@@ -85,6 +87,11 @@ public class MainMechanics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (orderList.Count != 0)
+        {
+            UpdateOrderBox(orderList[0].Remove(0, 1));
+        }
+
         cdDay -= Time.deltaTime;
         if (cdDay <= 0f)
         {
@@ -116,7 +123,7 @@ public class MainMechanics : MonoBehaviour
         // Countdown Customer
         for (int i = 0; i < orderList.Count; i++)
         {
-            print(orderList.Count);
+            // print(orderList.Count);
             if (cdCustomerCheck[i] == true && cdCustomer[i] > 0)
             {
                 cdCustomer[i] -= Time.deltaTime;
@@ -131,8 +138,7 @@ public class MainMechanics : MonoBehaviour
                 break;
                 // if (allowBackgroundOrder == false)
                 // {
-                //     cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
-                //     cdCustomerDelayCheck = true;
+                //     StartCustomerDelay();
                 // }
             }
         }
@@ -170,6 +176,12 @@ public class MainMechanics : MonoBehaviour
         // {
         //     cdCustomerDelay -= Time.deltaTime;
         // }
+    }
+
+    void StartCustomerDelay()
+    {
+        cdCustomerDelay = (float)(UnityEngine.Random.Range(1, 5));
+        cdCustomerDelayCheck = true;
     }
 
     void ChangeDay()
@@ -300,21 +312,20 @@ public class MainMechanics : MonoBehaviour
         cdCustomerCheck.Add(true);
         cdCustomerReject = 0;
         cdCustomerRejectCheck = false;
-        cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
-        cdCustomerDelayCheck = true;
+        StartCustomerDelay();
 
         bm.DialogueBoxExit();
         acceptButton.SetActive(false);
         rejectButton.SetActive(false);
         customerImg.SetActive(false);
+
         // RequestOrder();
     }
 
     public void RejectOrder()
     {
         rt.ClearText();
-        cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
-        cdCustomerDelayCheck = true;
+        StartCustomerDelay();
         cdCustomerReject = 0;
         cdCustomerRejectCheck = false;
         bm.DialogueBoxExit();
@@ -326,6 +337,8 @@ public class MainMechanics : MonoBehaviour
     // Dipanggil untuk berpindah-pindah lokasi
     public void SwitchPlace()
     {
+        ic.ChangeBackground();
+        transition.Play("animation_start");
         if (place == 0)
         {
             if (allowBackgroundOrder == false)
@@ -344,13 +357,13 @@ public class MainMechanics : MonoBehaviour
             bm.OrderBoxEnter();
             bm.KitBoxEnter();
             bm.DialogueBoxEnter();
+            rt.ClearText();
         }
         else if (place == 1)
         {
             if (allowBackgroundOrder == false)
             {
-                cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
-                cdCustomerDelayCheck = true;
+                StartCustomerDelay();
             }
 
             place = 0;
@@ -415,6 +428,43 @@ public class MainMechanics : MonoBehaviour
                 x += 1;
                 // print(Convert.ToInt32(Convert.ToString(text[x]))); //4131220210
                 list[i].Add(Convert.ToInt32(Convert.ToString(text[x])));
+                // break;
+            }
+            // break;
+        }
+    }
+
+    // menerjemahkan list orderList sehingga bisa merubah gambar pesanan di order box
+    void UpdateOrderBox(string text)
+    {
+        int x = 0;
+        int y = 0;
+        for (int i = x; i < Convert.ToInt32(Convert.ToString(text[0])); i++)
+        {
+            x += 1;
+            y = x;
+            // print(i);
+            for (int j = y; j < y + Convert.ToInt32(Convert.ToString(text[y])); j++)
+            {
+                x += 1;
+                // print(Convert.ToInt32(Convert.ToString(text[x]))); //4131220210
+                // list[i].Add(Convert.ToInt32(Convert.ToString(text[x])));
+                if (i == 0)
+                {
+                    ic.ChangeCupOrder(Convert.ToInt32(Convert.ToString(text[x])));
+                }
+                if (i == 1)
+                {
+                    ic.ChangeIceCreamOrder(Convert.ToInt32(Convert.ToString(text[x])));
+                }
+                if (i == 2)
+                {
+                    ic.ChangeToppingOrder(Convert.ToInt32(Convert.ToString(text[x])));
+                }
+                if (i == 3)
+                {
+                    ic.ChangeSyrupOrder(Convert.ToInt32(Convert.ToString(text[x])));
+                }
                 // break;
             }
             // break;
@@ -552,11 +602,12 @@ public class MainMechanics : MonoBehaviour
             Trash();
             GetMoney();
             orderList.RemoveAt(0);
+            cdCustomer.RemoveAt(0);
+            cdCustomerCheck.RemoveAt(0);
 
             SwitchPlace();
             rt.ClearText();
-            cdCustomerDelay = (float)(UnityEngine.Random.Range(0, 5));
-            cdCustomerDelayCheck = true;
+            StartCustomerDelay();
             cdCustomerReject = 0;
             cdCustomerRejectCheck = false;
             bm.DialogueBoxExit();
