@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ImageChanger : MonoBehaviour
 {
+    public MainMechanics mm;
+
     public Animator customerGroup;
     public Animator cupMask;
     public Animator icecreamMask;
@@ -42,11 +44,15 @@ public class ImageChanger : MonoBehaviour
     void Start()
     {
         bgIndex = 0;
+        bgColor = 255;
     }
 
     // Update is called once per frame
+    float bgColor;
     void Update()
     {
+        background.color = new Color32((byte)bgColor, (byte)bgColor, (byte)bgColor, 255);
+        bgColor = (mm.cdDay * 100 / 600) + 155;
         if (timerEnabled == true && timer > 0)
         {
             timer -= Time.deltaTime;

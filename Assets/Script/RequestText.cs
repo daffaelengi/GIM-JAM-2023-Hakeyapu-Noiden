@@ -58,24 +58,26 @@ public class RequestText : MonoBehaviour
     }
 
     // Update is called once per frame
+    float hourFiction;
     void Update()
     {
+        hourFiction = ((600 - mm.cdDay) * 900 / 600) + 420;
         dayText.text = "Day " + Convert.ToString(mm.day + 1);
-        if (Convert.ToString(Convert.ToInt32(mm.cdDay)/60).Length != 1 && Convert.ToString(Convert.ToInt32(mm.cdDay%60)).Length != 1)
+        if (Convert.ToString(Convert.ToInt32(hourFiction)/60).Length != 1 && Convert.ToString(Convert.ToInt32(hourFiction%60)).Length != 1)
         {
-            timerText.text = Convert.ToString(Convert.ToInt32(mm.cdDay)/60) + ":" + Convert.ToString(Convert.ToInt32(mm.cdDay%60));
+            timerText.text = Convert.ToString(Convert.ToInt32(hourFiction)/60) + ":" + Convert.ToString(Convert.ToInt32(hourFiction%60));
         }
-        else if (Convert.ToString(Convert.ToInt32(mm.cdDay)/60).Length == 1 && Convert.ToString(Convert.ToInt32(mm.cdDay%60)).Length == 1)
+        else if (Convert.ToString(Convert.ToInt32(hourFiction)/60).Length == 1 && Convert.ToString(Convert.ToInt32(hourFiction%60)).Length == 1)
         {
-            timerText.text = "0" + Convert.ToString(Convert.ToInt32(mm.cdDay)/60) + ":0" + Convert.ToString(Convert.ToInt32(mm.cdDay%60));
+            timerText.text = "0" + Convert.ToString(Convert.ToInt32(hourFiction)/60) + ":0" + Convert.ToString(Convert.ToInt32(hourFiction%60));
         }
-        else if (Convert.ToString(Convert.ToInt32(mm.cdDay%60)).Length == 1)
+        else if (Convert.ToString(Convert.ToInt32(hourFiction%60)).Length == 1)
         {
-            timerText.text = Convert.ToString(Convert.ToInt32(mm.cdDay)/60) + ":0" + Convert.ToString(Convert.ToInt32(mm.cdDay%60));
+            timerText.text = Convert.ToString(Convert.ToInt32(hourFiction)/60) + ":0" + Convert.ToString(Convert.ToInt32(hourFiction%60));
         }
         else
         {
-            timerText.text = "0" + Convert.ToString(Convert.ToInt32(mm.cdDay)/60) + ":" + Convert.ToString(Convert.ToInt32(mm.cdDay%60));
+            timerText.text = "0" + Convert.ToString(Convert.ToInt32(hourFiction)/60) + ":" + Convert.ToString(Convert.ToInt32(hourFiction%60));
         }
         // print(mm.variant[0]);
     }

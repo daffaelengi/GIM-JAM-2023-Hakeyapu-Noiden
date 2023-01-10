@@ -6,8 +6,8 @@ public class BlinkText : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
 
-    private float transparencyInterval = 0.001f;
-    private float transparencyDelta = 0.003f;
+    public float transparencyInterval = 0.001f;
+    public float transparencyDelta = 0.003f;
     private bool fadeIn = true;
 
     IEnumerator Start()

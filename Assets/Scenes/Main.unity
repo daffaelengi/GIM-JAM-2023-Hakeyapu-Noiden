@@ -11955,7 +11955,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 000e26e8de1919341a79eaa74fd3027d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15455,6 +15455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553d881691d94124a8a5fbdace275535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mm: {fileID: 2099585618}
   customerGroup: {fileID: 2097155716}
   cupMask: {fileID: 0}
   icecreamMask: {fileID: 1561479555}

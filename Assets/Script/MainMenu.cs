@@ -1,12 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private void Update()
+    public Animator transition;
+    public float transitionTime = 1f;
+    void Update()
     {
         if (Input.GetMouseButtonDown(0) && !SettingsButton.isHovered)
-            SceneManager.LoadScene("SampleScene");
+        {
+            StartCoroutine(TransitionToScene("Main"));
+        }
+    }
+
+    IEnumerator TransitionToScene (string str)
+    {
+        transition.Play("animation_start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(str);
     }
 
 }
