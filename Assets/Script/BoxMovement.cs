@@ -7,14 +7,17 @@ public class BoxMovement : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject orderBox;
     public GameObject kitBox;
+    public GameObject counter;
     
     public bool dialogueBoxEnter;
     public bool orderBoxEnter;
     public bool kitBoxEnter;
+    public bool counterEnter;
     
     Vector3 dialogueBoxDelta;
     Vector3 orderBoxDelta;
     Vector3 kitBoxDelta;
+    Vector3 counterDelta;
     
     public float speed;
 
@@ -44,31 +47,45 @@ public class BoxMovement : MonoBehaviour
         }
 
         // orderBoxEnter
-        if (orderBoxDelta.x < -1050.2f && orderBoxEnter == true)
+        if (orderBoxDelta.x < -860 && orderBoxEnter == true)
         {
             orderBox.GetComponent<RectTransform>().anchoredPosition = orderBoxDelta;
             orderBoxDelta.x += speed * Time.deltaTime;
         }
 
         // orderBoxExit
-        if (orderBoxDelta.x > -1609.8f && orderBoxEnter == false)
+        if (orderBoxDelta.x > -1800 && orderBoxEnter == false)
         {
             orderBox.GetComponent<RectTransform>().anchoredPosition = orderBoxDelta;
             orderBoxDelta.x -= speed * Time.deltaTime;
         }
 
         // kitBoxEnter
-        if (kitBoxDelta.x > 1050.2f && kitBoxEnter == true)
+        if (kitBoxDelta.x > 845f && kitBoxEnter == true)
         {
             kitBox.GetComponent<RectTransform>().anchoredPosition = kitBoxDelta;
             kitBoxDelta.x -= speed * Time.deltaTime;
         }
 
         // kitBoxExit
-        if (kitBoxDelta.x < 1609.8f && kitBoxEnter == false)
+        if (kitBoxDelta.x < 1800f && kitBoxEnter == false)
         {
             kitBox.GetComponent<RectTransform>().anchoredPosition = kitBoxDelta;
             kitBoxDelta.x += speed * Time.deltaTime;
+        }
+
+        // counterEnter
+        if (counterDelta.y < 0f && counterEnter == true)
+        {
+            counter.GetComponent<RectTransform>().anchoredPosition = counterDelta;
+            counterDelta.y += speed * Time.deltaTime;
+        }
+
+        // counterExit
+        if (counterDelta.y > -1440f && counterEnter == false)
+        {
+            counter.GetComponent<RectTransform>().anchoredPosition = counterDelta;
+            counterDelta.y -= speed * Time.deltaTime;
         }
     }
 
@@ -103,29 +120,45 @@ public class BoxMovement : MonoBehaviour
 
     public void OrderBoxEnter()
     {
-        orderBoxDelta.x = -1609.8f;
-        orderBox.GetComponent<RectTransform>().anchoredPosition = orderBoxDelta;
+        orderBoxDelta.x = orderBox.GetComponent<RectTransform>().anchoredPosition.x;
+        // orderBox.GetComponent<RectTransform>().anchoredPosition = orderBoxDelta;
         orderBoxEnter = true;
     }
 
     public void OrderBoxExit()
     {
-        orderBoxDelta.x = -1050.2f;
-        orderBox.GetComponent<RectTransform>().anchoredPosition = orderBoxDelta;
+        orderBoxDelta.x = orderBox.GetComponent<RectTransform>().anchoredPosition.x;
+        // orderBox.GetComponent<RectTransform>().anchoredPosition = orderBoxDelta;
         orderBoxEnter = false;
     }
 
     public void KitBoxEnter()
     {
-        kitBoxDelta.x = 1609.8f;
-        kitBox.GetComponent<RectTransform>().anchoredPosition = kitBoxDelta;
+        kitBoxDelta.x = kitBox.GetComponent<RectTransform>().anchoredPosition.x;
+        // kitBox.GetComponent<RectTransform>().anchoredPosition = kitBoxDelta;
         kitBoxEnter = true;
     }
 
     public void KitBoxExit()
     {
-        kitBoxDelta.x = 1050.2f;
-        kitBox.GetComponent<RectTransform>().anchoredPosition = kitBoxDelta;
+        kitBoxDelta.x = kitBox.GetComponent<RectTransform>().anchoredPosition.x;
+        // kitBox.GetComponent<RectTransform>().anchoredPosition = kitBoxDelta;
         kitBoxEnter = false;
+    }
+
+    public void CounterEnter()
+    {
+        counterDelta.y = counter.GetComponent<RectTransform>().anchoredPosition.y;
+        // counterDelta.y = -989.2499f;
+        // counter.GetComponent<RectTransform>().anchoredPosition = counterDelta;
+        counterEnter = true;
+    }
+
+    public void CounterExit()
+    {
+        counterDelta.y = counter.GetComponent<RectTransform>().anchoredPosition.y;
+        // counterDelta.y = -450f;
+        // counter.GetComponent<RectTransform>().anchoredPosition = counterDelta;
+        counterEnter = false;
     }
 }

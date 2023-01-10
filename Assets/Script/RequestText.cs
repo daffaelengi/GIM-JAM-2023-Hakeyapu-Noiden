@@ -7,6 +7,8 @@ using System;
 public class RequestText : MonoBehaviour
 {
     public TextMeshProUGUI textUI;
+    public TextMeshProUGUI dayText;
+    public TextMeshProUGUI timerText;
     public MainMechanics mm;
     string cream = "";
     string topping = "";
@@ -47,6 +49,7 @@ public class RequestText : MonoBehaviour
         {
             textUI.text = Convert.ToString(mm.cup[mm.reqCup[0]]) + cream;
         }
+
     }
 
     public void ClearText()
@@ -57,6 +60,23 @@ public class RequestText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dayText.text = "Day " + Convert.ToString(mm.day + 1);
+        if (Convert.ToString(Convert.ToInt32(mm.cdDay)/60).Length != 1 && Convert.ToString(Convert.ToInt32(mm.cdDay%60)).Length != 1)
+        {
+            timerText.text = Convert.ToString(Convert.ToInt32(mm.cdDay)/60) + ":" + Convert.ToString(Convert.ToInt32(mm.cdDay%60));
+        }
+        else if (Convert.ToString(Convert.ToInt32(mm.cdDay)/60).Length == 1 && Convert.ToString(Convert.ToInt32(mm.cdDay%60)).Length == 1)
+        {
+            timerText.text = "0" + Convert.ToString(Convert.ToInt32(mm.cdDay)/60) + ":0" + Convert.ToString(Convert.ToInt32(mm.cdDay%60));
+        }
+        else if (Convert.ToString(Convert.ToInt32(mm.cdDay%60)).Length == 1)
+        {
+            timerText.text = Convert.ToString(Convert.ToInt32(mm.cdDay)/60) + ":0" + Convert.ToString(Convert.ToInt32(mm.cdDay%60));
+        }
+        else
+        {
+            timerText.text = "0" + Convert.ToString(Convert.ToInt32(mm.cdDay)/60) + ":" + Convert.ToString(Convert.ToInt32(mm.cdDay%60));
+        }
         // print(mm.variant[0]);
     }
 }

@@ -5,12 +5,23 @@ using UnityEngine.UI;
 
 public class ImageChanger : MonoBehaviour
 {
+    public Animator customerGroup;
+    public Animator cupMask;
+    public Animator icecreamMask;
+    public Animator toppingMask;
+    public Animator syrupMask;
+    public Button acceptOrder;
+    public Button rejectOrder;
     public Image background;
     public Image cupOrder;
     public Image icecreamOrder;
     public Image toppingOrder;
     public Image syrupOrder;
     public Image customer;
+    public Image cup;
+    public Image icecream;
+    public Image topping;
+    public Image syrup;
     public Sprite[] backgroundSprite;
     public Sprite[] cupOrderSprite;
     public Sprite[] icecreamOrderSprite;
@@ -18,6 +29,11 @@ public class ImageChanger : MonoBehaviour
     public Sprite[] syrupOrderSprite;
     public Sprite[] customerMaleSprite;
     public Sprite[] customerFemaleSprite;
+    public Sprite[] cupSprite;
+    public Sprite[] icecreamSprite;
+    public Sprite[] toppingSprite;
+    public Sprite[] syrupSprite;
+    public Sprite blank;
     public float backgroundDelay;
     public float timer;
     public bool timerEnabled = false;
@@ -91,5 +107,85 @@ public class ImageChanger : MonoBehaviour
         {
             customer.sprite = customerFemaleSprite[expression];
         }
+    }
+
+    public void CustomerGroupEnter()
+    {
+        customerGroup.Play("customergroup_start");
+        acceptOrder.interactable = true;
+        rejectOrder.interactable = true;
+    }
+
+    public void CustomerGroupExit()
+    {
+        customerGroup.Play("customergroup_end");
+        acceptOrder.interactable = false;
+        rejectOrder.interactable = false;
+    }
+
+    int cupType;
+    public void PlaceCup(int num)
+    {
+        cupType = num;
+        cup.sprite = cupSprite[num];
+    }
+
+    public void PlaceIceCream(int num)
+    {
+        if (cupType == 0)
+        {
+            icecream.sprite = icecreamSprite[num];
+        }
+        if (cupType == 1)
+        {
+            icecream.sprite = icecreamSprite[num + 3];
+        }
+        icecreamMask.Play("icecream_pour");
+        // print("A");
+    }
+
+    public void PlaceSyrup(int num)
+    {
+        syrup.sprite = syrupSprite[num];
+    }
+
+    public void PlaceTopping(int num)
+    {
+        topping.sprite = toppingSprite[num];
+    }
+
+    public void Blank(Image img)
+    {
+        img.sprite = blank;
+    }
+
+    public void PlaceFullIceCream(int j, int i)
+    {
+        if (j == 0)
+        {
+            cup.sprite = cupSprite[i];
+        }
+        if (j == 1)
+        {
+            if (cupType == 0)
+            {
+            print(i);
+            print(cupType);
+                icecream.sprite = icecreamSprite[i];
+            }
+            if (cupType == 1)
+            {
+                icecream.sprite = icecreamSprite[i + 3];
+            }
+        }
+        if (j == 2)
+        {
+            topping.sprite = toppingSprite[i];
+        }
+        if (j == 3)
+        {
+            syrup.sprite = syrupSprite[i];
+        }
+
     }
 }

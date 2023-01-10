@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class MainMechanics : MonoBehaviour
 {
-    public MakeText mt;
+    // public MakeText mt;
     public RequestText rt;
     public BoxMovement bm;
     public ImageChanger ic;
 
     public Animator transition;
 
-    public GameObject acceptButton;
-    public GameObject rejectButton;
-    public GameObject customerImg;
+    // public GameObject acceptButton;
+    // public GameObject rejectButton;
+    // public GameObject customerImg;
 
     public string[] cup;
     public string[] variant; // menyimpan macam-macam variant ice cream
@@ -62,9 +62,15 @@ public class MainMechanics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        acceptButton.SetActive(false);
-        rejectButton.SetActive(false);
-        customerImg.SetActive(false);
+        // acceptButton.SetActive(false);
+        // rejectButton.SetActive(false);
+        // customerImg.SetActive(false);
+
+        ic.Blank(ic.cup);
+        ic.Blank(ic.icecream);
+        ic.Blank(ic.syrup);
+        ic.Blank(ic.topping);
+        
         place = 0;
         
         StartCustomerDelay();
@@ -261,9 +267,10 @@ public class MainMechanics : MonoBehaviour
 
         bm.DialogueBoxEnter();
         rt.UpdateText();
-        customerImg.SetActive(true);
-        acceptButton.SetActive(true);
-        rejectButton.SetActive(true);
+        // customerImg.SetActive(true);
+        // acceptButton.SetActive(true);
+        // rejectButton.SetActive(true);
+        ic.CustomerGroupEnter();
 
         if (orderTemp != "")
         {
@@ -327,9 +334,10 @@ public class MainMechanics : MonoBehaviour
         StartCustomerDelay();
 
         bm.DialogueBoxExit();
-        acceptButton.SetActive(false);
-        rejectButton.SetActive(false);
-        customerImg.SetActive(false);
+        // acceptButton.SetActive(false);
+        // rejectButton.SetActive(false);
+        // customerImg.SetActive(false);
+        ic.CustomerGroupExit();
 
         // RequestOrder();
     }
@@ -341,9 +349,10 @@ public class MainMechanics : MonoBehaviour
         cdCustomerReject = 0;
         cdCustomerRejectCheck = false;
         bm.DialogueBoxExit();
-        acceptButton.SetActive(false);
-        rejectButton.SetActive(false);
-        customerImg.SetActive(false);
+        // acceptButton.SetActive(false);
+        // rejectButton.SetActive(false);
+        // customerImg.SetActive(false);
+        ic.CustomerGroupExit();
     }
 
     // Dipanggil untuk berpindah-pindah lokasi
@@ -361,18 +370,25 @@ public class MainMechanics : MonoBehaviour
                 cdCustomerRejectCheck = false;
             }
 
-            customerImg.SetActive(false);
-            acceptButton.SetActive(false);
-            rejectButton.SetActive(false);
+            // customerImg.SetActive(false);
+            // acceptButton.SetActive(false);
+            // rejectButton.SetActive(false);
+            ic.CustomerGroupExit();
             
             place = 1;
             bm.OrderBoxEnter();
             bm.KitBoxEnter();
-            bm.DialogueBoxEnter();
+            bm.CounterEnter();
+            bm.DialogueBoxExit();
             rt.ClearText();
+            UpdateIceCream(orderMake);
         }
         else if (place == 1)
         {
+            // ic.Blank(ic.cup);
+            // ic.Blank(ic.icecream);
+            // ic.Blank(ic.syrup);
+            // ic.Blank(ic.topping);
             if (allowBackgroundOrder == false)
             {
                 StartCustomerDelay();
@@ -381,33 +397,57 @@ public class MainMechanics : MonoBehaviour
             place = 0;
             bm.OrderBoxExit();
             bm.KitBoxExit();
-            bm.DialogueBoxExit();
+            bm.CounterExit();
         }
     }
 
     // Dipanggil setiap menambah sesuatu pada orderan yang sedang dibuat
+    bool cupPlaced = false;
     public void AddCup(int num)
     {
-        makeCup.Add(num);
-        mt.UpdateText(1);
+        if (cupPlaced == false)
+        {
+            ic.PlaceCup(num);
+            cupPlaced = true;
+            makeCup.Add(num);
+            // mt.UpdateText(1);
+        }
     }
 
+    bool flavorPlaced = false;
     public void AddIceCream(int num)
     {
-        makeIceCream.Add(num);
-        mt.UpdateText(2);
+        if (cupPlaced == true && flavorPlaced == false)
+        {
+            ic.PlaceIceCream(num);
+            flavorPlaced = true;
+            makeIceCream.Add(num);
+            // mt.UpdateText(2);
+        }
     }
 
+    bool toppingPlaced = false;
     public void AddTopping(int num)
     {
-        makeTopping.Add(num);
-        mt.UpdateText(3);
+        if (flavorPlaced == true && toppingPlaced == false)
+        {
+            ic.PlaceTopping(num);
+            toppingPlaced = true;
+            makeTopping.Add(num);
+            // mt.UpdateText(3);
+        }
     }
 
+    bool syrupPlaced = false;
     public void AddSyrup(int num)
     {
-        makeSyrup.Add(num);
-        mt.UpdateText(4);
+        if (flavorPlaced == true && syrupPlaced == false)
+        {
+            ic.PlaceSyrup(num);
+            syrupPlaced = true;
+            makeSyrup.Add(num);
+            // mt.UpdateText(4);
+        }
     }
 
     string StringWriter(List<List<int>> list)
@@ -444,6 +484,39 @@ public class MainMechanics : MonoBehaviour
             }
             // break;
         }
+    }
+
+    void UpdateIceCream(List<List<int>> list)
+    {
+        ic.icecreamMask.Play("entry");
+        // string save = "";
+        // string save = Convert.ToString(list.Count);
+        for (int j = 0; j < list.Count; j++)
+        {
+            // save += Convert.ToString(list[j].Count);
+            for (int i = 0; i < list[j].Count; i++)
+            {
+                // save += Convert.ToString(list[j][i]);
+                ic.PlaceFullIceCream(j, list[j][i]);
+                // if (j == 0)
+                // {
+                //     ic.PlaceCup(i);
+                // }
+                // if (j == 1)
+                // {
+                //     ic.PlaceIceCream(i);
+                // }
+                // if (j == 2)
+                // {
+                //     ic.PlaceTopping(i);
+                // }
+                // if (j == 3)
+                // {
+                //     ic.PlaceSyrup(i);
+                // }
+            }
+        }
+        // return save;
     }
 
     // menerjemahkan list orderList sehingga bisa merubah gambar pesanan di order box
@@ -504,7 +577,8 @@ public class MainMechanics : MonoBehaviour
             {
                 slotCheck[0] = 0;
                 StringReader(slot[0], orderMake);
-                mt.UpdateText(5);
+                UpdateIceCream(orderMake);
+                // mt.UpdateText(5);
             }  
         }
         if (num == 2)
@@ -524,7 +598,8 @@ public class MainMechanics : MonoBehaviour
             {
                 slotCheck[1] = 0;
                 StringReader(slot[1], orderMake);
-                mt.UpdateText(5);
+                UpdateIceCream(orderMake);
+                // mt.UpdateText(5);
             }  
         }
         if (num == 3)
@@ -544,7 +619,8 @@ public class MainMechanics : MonoBehaviour
             {
                 slotCheck[2] = 0;
                 StringReader(slot[2], orderMake);
-                mt.UpdateText(5);
+                UpdateIceCream(orderMake);
+                // mt.UpdateText(5);
             }  
         }
         // if (num == 2)
@@ -579,7 +655,16 @@ public class MainMechanics : MonoBehaviour
 
     public void Trash()
     {
-        mt.UpdateText(0);
+        cupPlaced = false;
+        flavorPlaced = false;
+        syrupPlaced = false;
+        toppingPlaced = false;
+        ic.icecreamMask.Play("exit");
+        ic.Blank(ic.cup);
+        ic.Blank(ic.icecream);
+        ic.Blank(ic.syrup);
+        ic.Blank(ic.topping);
+        // mt.UpdateText(0);
         makeCup.Clear();
         makeIceCream.Clear();
         makeTopping.Clear();
@@ -623,9 +708,10 @@ public class MainMechanics : MonoBehaviour
             cdCustomerReject = 0;
             cdCustomerRejectCheck = false;
             bm.DialogueBoxExit();
-            acceptButton.SetActive(false);
-            rejectButton.SetActive(false);
-            customerImg.SetActive(false);
+            // acceptButton.SetActive(false);
+            // rejectButton.SetActive(false);
+            // customerImg.SetActive(false);
+            ic.CustomerGroupExit();
             // Customer();
         }
         else
