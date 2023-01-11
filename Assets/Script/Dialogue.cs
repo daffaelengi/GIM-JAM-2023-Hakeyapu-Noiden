@@ -107,6 +107,19 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+        if (index == 0)
+            FindObjectOfType<AudioManager>().Play("bing");
+        else if (index == 3)
+            FindObjectOfType<AudioManager>().Play("dil_nanyae");
+        else if (index == 5)
+            FindObjectOfType<AudioManager>().Play("dil_cepmek");
+        else if (index == 8)
+            FindObjectOfType<AudioManager>().Play("dil_nt");
+        else if (index == 13)
+            FindObjectOfType<AudioManager>().Play("dil_nanyae");
+        else if (index == 17)
+            FindObjectOfType<AudioManager>().Play("dil_penjelasan");
+
         foreach (char c in lines[index].ToCharArray())
         {
             textDialogue.text += c;

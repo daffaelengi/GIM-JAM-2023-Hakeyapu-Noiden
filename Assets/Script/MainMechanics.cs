@@ -67,6 +67,7 @@ public class MainMechanics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("crowd");
         // acceptButton.SetActive(false);
         // rejectButton.SetActive(false);
         // customerImg.SetActive(false);
@@ -284,6 +285,7 @@ public class MainMechanics : MonoBehaviour
             // specialMakingEnabled = false;
             if (money < moneyTarget)
             {
+                FindObjectOfType<AudioManager>().Play("boom");
                 GameOver();
                 // money = 0;
             }
@@ -316,6 +318,15 @@ public class MainMechanics : MonoBehaviour
 
     void DayPassed()
     {
+        int randInt = UnityEngine.Random.Range(0, 2);
+        if (randInt == 0)
+        {
+            FindObjectOfType<AudioManager>().Play("noice");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("yeah"); ;
+        }
         StartCoroutine(sc.TransitionToScene("DayPassed"));
     }
 
@@ -323,6 +334,7 @@ public class MainMechanics : MonoBehaviour
     string orderTemp;
     void Customer()
     {
+        FindObjectOfType<AudioManager>().Play("customer");
         orderTemp = "";
 
         // Start Customer Reject Timer
@@ -415,6 +427,7 @@ public class MainMechanics : MonoBehaviour
 
     void GetMoney()
     {
+        FindObjectOfType<AudioManager>().Play("cash");
         if (specialEnabled)
         {
             money += 34;
@@ -448,6 +461,7 @@ public class MainMechanics : MonoBehaviour
 
     public void AcceptOrder()
     {
+        FindObjectOfType<AudioManager>().Play("pop");
         orderList.Add(orderTemp);
         
         cdCustomer.Add(30f);
@@ -467,6 +481,7 @@ public class MainMechanics : MonoBehaviour
 
     public void RejectOrder()
     {
+        FindObjectOfType<AudioManager>().Play("pop");
         rt.ClearText();
         StartCustomerDelay();
         cdCustomerReject = 0;
@@ -481,6 +496,7 @@ public class MainMechanics : MonoBehaviour
     // Dipanggil untuk berpindah-pindah lokasi
     public void SwitchPlace()
     {
+        FindObjectOfType<AudioManager>().Play("but1");
         if (orderList.Count != 0)
         {
             UpdateOrderBox(orderList[0].Remove(0, 1));
@@ -503,6 +519,7 @@ public class MainMechanics : MonoBehaviour
             ic.CustomerGroupExit();
             
             place = 1;
+            FindObjectOfType<AudioManager>().Stop("crowd");
             bm.OrderBoxEnter();
             bm.KitBoxEnter();
             bm.CounterEnter();
@@ -522,6 +539,7 @@ public class MainMechanics : MonoBehaviour
             }
 
             place = 0;
+            FindObjectOfType<AudioManager>().Play("crowd");
             bm.OrderBoxExit();
             bm.KitBoxExit();
             bm.CounterExit();
@@ -534,6 +552,11 @@ public class MainMechanics : MonoBehaviour
     {
         if (cupPlaced == false)
         {
+            if (num == 1)
+                FindObjectOfType<AudioManager>().Play("cup");
+            else
+                FindObjectOfType<AudioManager>().Play("cone");
+            
             ic.PlaceCup(num);
             cupPlaced = true;
             makeCup.Add(num);
@@ -546,6 +569,7 @@ public class MainMechanics : MonoBehaviour
     {
         if (cupPlaced == true && flavorPlaced == false)
         {
+            FindObjectOfType<AudioManager>().Play("pop");
             ic.PlaceIceCream(num);
             flavorPlaced = true;
             makeIceCream.Add(num);
@@ -558,6 +582,7 @@ public class MainMechanics : MonoBehaviour
     {
         if (flavorPlaced == true && toppingPlaced == false)
         {
+            FindObjectOfType<AudioManager>().Play("pop");
             ic.PlaceTopping(num);
             toppingPlaced = true;
             makeTopping.Add(num);
@@ -570,6 +595,7 @@ public class MainMechanics : MonoBehaviour
     {
         if (flavorPlaced == true && syrupPlaced == false)
         {
+            FindObjectOfType<AudioManager>().Play("pop");
             ic.PlaceSyrup(num);
             syrupPlaced = true;
             makeSyrup.Add(num);

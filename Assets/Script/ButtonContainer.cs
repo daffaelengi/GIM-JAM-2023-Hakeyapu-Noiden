@@ -30,6 +30,7 @@ public class ButtonContainer : MonoBehaviour
                 pages[i].SetActive(false);
             }
         }
+        FindObjectOfType<AudioManager>().Play("but2");
     }
 
 }

@@ -21,6 +21,7 @@ public class SettingsButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void OnButtonClick()
     {
+        FindObjectOfType<AudioManager>().Play("but2");
         // Check the current scene
         if (SceneManager.GetActiveScene().name != sceneName)
         {
