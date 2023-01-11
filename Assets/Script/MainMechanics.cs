@@ -9,6 +9,7 @@ public class MainMechanics : MonoBehaviour
     public RequestText rt;
     public BoxMovement bm;
     public ImageChanger ic;
+    public SceneChanger sc;
 
     public Animator transition;
 
@@ -306,6 +307,16 @@ public class MainMechanics : MonoBehaviour
             dialogueList[0].SetActive(true);
             dialogueList.RemoveAt(0);
         }
+    }
+
+    void GameOver()
+    {
+        StartCoroutine(sc.TransitionToScene("GameOver"));
+    }
+
+    void DayPassed()
+    {
+        StartCoroutine(sc.TransitionToScene("DayPassed"));
     }
 
     // Dipanggil setiap berganti customer
