@@ -220,7 +220,7 @@ public class MainMechanics : MonoBehaviour
 
         if (money < moneyTarget)
         {
-            print("GameOver");
+            GameOver();
             money = 0;
         }
         else
@@ -249,7 +249,7 @@ public class MainMechanics : MonoBehaviour
         {
             if (money < moneyTarget)
             {
-                print("GameOver");
+                GameOver();
                 // money = 0;
             }
             else if (orderList.Count != 0)
@@ -284,7 +284,7 @@ public class MainMechanics : MonoBehaviour
             // specialMakingEnabled = false;
             if (money < moneyTarget)
             {
-                print("GameOver");
+                GameOver();
                 // money = 0;
             }
             else
@@ -294,7 +294,7 @@ public class MainMechanics : MonoBehaviour
 
             if (dialogueEnabled == false)
             {
-                // GAME FINISH DAY 1 - day passed
+                DayPassed();
             }
         }
     }
