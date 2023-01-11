@@ -840,9 +840,9 @@ public class MainMechanics : MonoBehaviour
             if (orderList.Count == 0)
             {
                 SwitchPlace();
+                StartCustomerDelay();
             }
             rt.ClearText();
-            StartCustomerDelay();
             cdCustomerReject = 0;
             cdCustomerRejectCheck = false;
             bm.DialogueBoxExit();
