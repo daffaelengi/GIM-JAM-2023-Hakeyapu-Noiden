@@ -38,6 +38,10 @@ public class MainMechanics : MonoBehaviour
     public bool cdCustomerRejectCheck;
     public List<bool> cdCustomerCheck = new List<bool>();
     public bool allowBackgroundOrder;
+    public bool dialogueEnabled = false;
+    public bool specialEnabled = false;
+
+    public List<GameObject> dialogueList;
 
     public List<List<int>> orderReq = new List<List<int>>(); // menyimpan orderan customer
     public List<int> reqCup = new List<int>(); // menyimpan orderan jenis cup
@@ -105,10 +109,19 @@ public class MainMechanics : MonoBehaviour
             ic.ChangeSyrupOrder(ic.syrupOrderSprite.Length-1);
         }
 
-        cdDay -= Time.deltaTime;
-        if (cdDay <= 0f)
+        if (cdDay > 0f && money < moneyTarget) // && cdDay <= 600 && money < moneyTarget)
         {
-            ChangeDay();
+            cdDay -= Time.deltaTime;
+        }
+        else //if (specialEnabled == false)
+        {
+            // ChangeDay();
+            // orderList.Clear();
+            SpecialEvent();
+            // if (cdDay <= 0 || money >= moneyTarget)
+            // {
+            //     // ChangeDay();
+            // }
         }
 
         // Countdown Customer Delay
@@ -197,11 +210,102 @@ public class MainMechanics : MonoBehaviour
         cdCustomerDelayCheck = true;
     }
 
-    void ChangeDay()
+    void ChangeDay() // pengerjaan di skip
     {
-        cdDay = 600f;
-        moneyTarget = moneyTarget * 110 / 100;
-        day += 1;
+        // cdDay = 600f;
+        // moneyTarget = moneyTarget * 110 / 100;
+        // day += 1;
+        cdDay = 0;
+
+        if (money < moneyTarget)
+        {
+            print("GameOver");
+            money = 0;
+        }
+        else
+        {
+            dialogueList[0].SetActive(true);
+            dialogueList.RemoveAt(0);
+            money = 0;
+            // play dialogue
+        }
+    }
+
+    bool clearOrderSpecial = false;
+    bool specialMakingEnabled = false;
+    void SpecialEvent()
+    {
+        specialEnabled = true;
+        cdDay = 0;
+
+        if (clearOrderSpecial == false)
+        {
+            clearOrderSpecial = true;
+            orderList.Clear();
+        }
+
+        if (dialogueEnabled == false && specialMakingEnabled == false)
+        {
+            if (money < moneyTarget)
+            {
+                print("GameOver");
+                // money = 0;
+            }
+            else if (orderList.Count != 0)
+            {
+                specialMakingEnabled = true;
+                money = 0;
+                SwitchPlace();
+                for (int i = 0; i < 3; i++)
+                {
+                    cdCustomerCheck[i] = true;
+                }
+            }
+            else
+            {
+                DialogueStart();
+                Customer();
+                AcceptOrder();
+                Customer();
+                AcceptOrder();
+                Customer();
+                AcceptOrder();
+                for (int i = 0; i < 3; i++)
+                {
+                    cdCustomerCheck[i] = false;
+                }
+                // money = 0;
+                // play dialogue
+            }
+        }
+        else if (orderList.Count == 0)// && money < moneyTarget)
+        {
+            // specialMakingEnabled = false;
+            if (money < moneyTarget)
+            {
+                print("GameOver");
+                // money = 0;
+            }
+            else
+            {
+                DialogueStart();
+            }
+
+            if (dialogueEnabled == false)
+            {
+                // GAME FINISH DAY 1 - day passed
+            }
+        }
+    }
+
+    void DialogueStart()
+    {
+        if (dialogueList.Count != 0)
+        {
+            dialogueEnabled = true;
+            dialogueList[0].SetActive(true);
+            dialogueList.RemoveAt(0);
+        }
     }
 
     // Dipanggil setiap berganti customer
@@ -300,13 +404,21 @@ public class MainMechanics : MonoBehaviour
 
     void GetMoney()
     {
-        money += 5 + reqTopping.Count;
-        
-        // B O N U S  M O N E Y
-        if (cdCustomer[0] >= 25f)
+        if (specialEnabled)
         {
-            money += 1;
+            money += 34;
         }
+        else
+        {
+            money += 5 + reqTopping.Count;
+            
+            // B O N U S  M O N E Y
+            if (cdCustomer[0] >= 25f)
+            {
+                money += 1;
+            }
+        }
+        
     }
 
     // // Dipanggil setiap menambah eskrim
@@ -358,6 +470,10 @@ public class MainMechanics : MonoBehaviour
     // Dipanggil untuk berpindah-pindah lokasi
     public void SwitchPlace()
     {
+        if (orderList.Count != 0)
+        {
+            UpdateOrderBox(orderList[0].Remove(0, 1));
+        }
         ic.ChangeBackground();
         transition.Play("animation_start");
         if (place == 0)
@@ -522,6 +638,10 @@ public class MainMechanics : MonoBehaviour
     // menerjemahkan list orderList sehingga bisa merubah gambar pesanan di order box
     void UpdateOrderBox(string text)
     {
+        ic.ChangeCupOrder(ic.cupOrderSprite.Length-1);
+        ic.ChangeIceCreamOrder(ic.icecreamOrderSprite.Length-1);
+        ic.ChangeToppingOrder(ic.toppingOrderSprite.Length-1);
+        ic.ChangeSyrupOrder(ic.syrupOrderSprite.Length-1);
         int x = 0;
         int y = 0;
         for (int i = x; i < Convert.ToInt32(Convert.ToString(text[0])); i++)
@@ -674,6 +794,10 @@ public class MainMechanics : MonoBehaviour
     // Dipanggil setiap menyelesaikan pesanan untuk mengecek kesesuaian pesanan
     public void Done(int num)
     {
+        if (orderList.Count != 0)
+        {
+            UpdateOrderBox(orderList[0].Remove(0, 1));
+        }
         // if (reqCup.Count != makeCup.Count || reqIceCream.Count != makeIceCream.Count || reqTopping.Count != makeTopping.Count || reqSyrup.Count != makeSyrup.Count)
         // {
         //     orderMake.Clear();
@@ -702,7 +826,10 @@ public class MainMechanics : MonoBehaviour
             cdCustomer.RemoveAt(0);
             cdCustomerCheck.RemoveAt(0);
 
-            SwitchPlace();
+            if (orderList.Count == 0)
+            {
+                SwitchPlace();
+            }
             rt.ClearText();
             StartCustomerDelay();
             cdCustomerReject = 0;
