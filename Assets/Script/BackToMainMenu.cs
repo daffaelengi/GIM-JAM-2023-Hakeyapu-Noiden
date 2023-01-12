@@ -11,6 +11,7 @@ public class BackToMainMenu : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !SettingsButton.isHovered)
         {
+            FindObjectOfType<AudioManager>().Play("bg");
             FindObjectOfType<AudioManager>().Play("but1");
             StartCoroutine(TransitionToScene("MainMenu"));
         }

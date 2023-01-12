@@ -21,6 +21,7 @@ public class Dialogue : MonoBehaviour
 
     // Array for saving index on specific event
     public List<int> audioEventOnIndex;
+    public List<string> audioList;
     public List<int> spriteEventOnIndex;
 
 
@@ -107,18 +108,18 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        if (index == 0)
-            FindObjectOfType<AudioManager>().Play("bing");
-        else if (index == 3)
-            FindObjectOfType<AudioManager>().Play("dil_nanyae");
-        else if (index == 5)
-            FindObjectOfType<AudioManager>().Play("dil_cepmek");
-        else if (index == 8)
-            FindObjectOfType<AudioManager>().Play("dil_nt");
-        else if (index == 13)
-            FindObjectOfType<AudioManager>().Play("dil_nanyae");
-        else if (index == 17)
-            FindObjectOfType<AudioManager>().Play("dil_penjelasan");
+        // if (index == 0)
+        //     FindObjectOfType<AudioManager>().Play("bing");
+        // else if (index == 3)
+        //     FindObjectOfType<AudioManager>().Play("dil_nanyae");
+        // else if (index == 5)
+        //     FindObjectOfType<AudioManager>().Play("dil_cepmek");
+        // else if (index == 8)
+        //     FindObjectOfType<AudioManager>().Play("dil_nt");
+        // else if (index == 13)
+        //     FindObjectOfType<AudioManager>().Play("dil_nanyae");
+        // else if (index == 17)
+        //     FindObjectOfType<AudioManager>().Play("dil_penjelasan");
 
         foreach (char c in lines[index].ToCharArray())
         {
@@ -156,6 +157,8 @@ public class Dialogue : MonoBehaviour
         if (audioEventOnIndex.Contains(i))
         {
             audioEventOnIndex.RemoveAt(0);
+            AudioEvent(audioList[0]);
+            audioList.RemoveAt(0);
             // Play audio
         }
         if (nameEventOnIndex.Contains(i))
@@ -194,5 +197,10 @@ public class Dialogue : MonoBehaviour
     void NameEvent(string str)
     {
         characterName.text = str;
+    }
+
+    void AudioEvent(string str)
+    {
+        FindObjectOfType<AudioManager>().Play(str);
     }
 }

@@ -9,6 +9,7 @@ public class SliderManager : MonoBehaviour
     public Slider moneyTarget;
     public Slider patienceTimer;
     public MainMechanics mm;
+    public float moneyTargetSpeed = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class SliderManager : MonoBehaviour
 
         if (moneyTarget.value < (float)mm.money)
         {
-            moneyTarget.value += 5 * Time.deltaTime;
+            moneyTarget.value += moneyTargetSpeed * Time.deltaTime;
         }
         else
         {

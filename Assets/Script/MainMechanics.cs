@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MainMechanics : MonoBehaviour
 {
@@ -67,7 +68,6 @@ public class MainMechanics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("crowd");
         // acceptButton.SetActive(false);
         // rejectButton.SetActive(false);
         // customerImg.SetActive(false);
@@ -94,6 +94,7 @@ public class MainMechanics : MonoBehaviour
         orderMake.Add(makeIceCream);
         orderMake.Add(makeTopping);
         orderMake.Add(makeSyrup);
+        FindObjectOfType<AudioManager>().Play("crowd");
     }
 
     // Update is called once per frame
@@ -235,8 +236,12 @@ public class MainMechanics : MonoBehaviour
 
     bool clearOrderSpecial = false;
     bool specialMakingEnabled = false;
+    public GameObject customerGroup;
+    public GameObject whiteBox;
     void SpecialEvent()
     {
+        customerGroup.SetActive(false);
+        whiteBox.SetActive(false);
         specialEnabled = true;
         cdDay = 0;
 
@@ -313,12 +318,16 @@ public class MainMechanics : MonoBehaviour
 
     void GameOver()
     {
+        FindObjectOfType<AudioManager>().Stop("bg");
         StartCoroutine(sc.TransitionToScene("GameOver"));
+        FindObjectOfType<AudioManager>().Play("game_over");        
     }
 
     void DayPassed()
     {
+        FindObjectOfType<AudioManager>().Stop("bg");
         int randInt = UnityEngine.Random.Range(0, 2);
+
         if (randInt == 0)
         {
             FindObjectOfType<AudioManager>().Play("noice");
@@ -334,16 +343,27 @@ public class MainMechanics : MonoBehaviour
     string orderTemp;
     void Customer()
     {
-        FindObjectOfType<AudioManager>().Play("customer");
         orderTemp = "";
 
-        // Start Customer Reject Timer
-        cdCustomerReject = 5f;
-        cdCustomerRejectCheck = true;
+        if (specialEnabled == true)
+        {
+            cdCustomerDelayCheck = false;
+            cdCustomerDelay = 0;
+            cdCustomerRejectCheck = false;
+            cdCustomerReject = 0;
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("customer");
+            // Start Customer Reject Timer
+            cdCustomerReject = 5f;
+            cdCustomerRejectCheck = true;
 
-        // Stop Customer Delay Timer
-        cdCustomerDelayCheck = false;
-        cdCustomerDelay = 0;
+            // Stop Customer Delay Timer
+            cdCustomerDelayCheck = false;
+            cdCustomerDelay = 0;
+        }
+
 
         // Clear Previous Order
         // orderMake.Clear();
@@ -494,6 +514,7 @@ public class MainMechanics : MonoBehaviour
     }
 
     // Dipanggil untuk berpindah-pindah lokasi
+    public TextMeshProUGUI switchText;
     public void SwitchPlace()
     {
         FindObjectOfType<AudioManager>().Play("but1");
@@ -526,6 +547,8 @@ public class MainMechanics : MonoBehaviour
             bm.DialogueBoxExit();
             rt.ClearText();
             UpdateIceCream(orderMake);
+
+            switchText.text = "Kitchen";
         }
         else if (place == 1)
         {
@@ -543,6 +566,8 @@ public class MainMechanics : MonoBehaviour
             bm.OrderBoxExit();
             bm.KitBoxExit();
             bm.CounterExit();
+
+            switchText.text = "Cashier";
         }
     }
 

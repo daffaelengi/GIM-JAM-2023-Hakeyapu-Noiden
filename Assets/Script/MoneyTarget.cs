@@ -26,5 +26,9 @@ public class MoneyTarget : MonoBehaviour
         {
             moneyTarget.value += Time.deltaTime;
         }
+        else
+        {
+            moneyTarget.value = (float)mm.money;
+        }
     }
 }
