@@ -1,0 +1,730 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!114 &1455948950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883069795230635578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d33877085937de40a25da30651e22cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 883069793935095276}
+  lines: []
+  textSpeed: 0.05
+  prologueLines:
+  - Kocokue, sebuah toko es krim yang kini sedang populer di Negara Wakanda. Cabangnya
+    menjamur di berbagai sudut, dan hingga kini masyarakat Wakanda belum menunjukkan
+    kejenuhannya terhadap toko es krim yang satu ini.
+  - 'Kisah ini mengambil sudut pandang dari salah satu pegawai toko Kocokue yang
+    tak ingin disebutkan namanya. Hari-hari berlalu, berbagai macam pelanggan datang
+    dan memesan. Tentu saja, berbagai jenis pelanggan datang, bahkan bisa jadi sosok
+    tak terduga dapat muncul pula.  '
+  - 'Bagaimana kalau sosok yang datang itu merupakan sosok istimewa yang sering menghiasi
+    linimasa media sosialmu? '
+  part1Lines:
+  - "Setelah bunyi bel \u201CBing Chiling\u201D yang selalu kudengar di tengah suasana
+    keramaian, muncullah suatu sosok yang familiar."
+  - "\u201CSilahkan Kak, ingin order apa?\u201D "
+  - "???: \u201CKamu nanyaaee?\u201D"
+  - "???: \"Biar aku kasih tau ya! Aku tuh maunya es cepmek yae!\u201D"
+  - "Oh ternyata Dilan si Cepmek\u2026"
+  - "\u201CEs cepmek..? Emm, maaf kami tidak menjualnya di sini\u2026\u201D "
+  - "Dilan Cepmek: \u201CNT kadang kadang NT ya! Cepmek tuh cepak mekar yae! Cepak
+    meeekar.\u201D"
+  - "\u201CGak ada yang nanyaee.\u201D "
+  - "Dilan Cepmek: \"...Ah ya sudah. Karena gak ada es Cepmek yae, saya mau pesan\u2026\" "
+  - 'Syukurlah, akhirnya si Dilan Cepmek ini tidak Cepmek-an lagi. '
+  - "\u201CItu saja pesanannya?\u201D "
+  - "Dilan Cepmek: \u201CKamu nanyaaee? Ya sudah, biar aku kasih tau ya!\u201D "
+  - "\u201CGak usah, makasih.\u201D"
+  - "Dilan Cepmek: \u201CEh bentar, ini saya mau pakai voucher-nya.\u201D"
+  - "\u201CSip. Ngomong-ngomong, saya penasaran. Rambut model Kak Dilan gimana cara
+    dirawatnya ya?\u201D "
+  - "Dilan Cepmek: \u201COh ini. Model rambut  Cepmek yae, cepak mekar! Ini mah aku
+    rawat biasa aja yae. Gak yang terlalu gimana gitu.\u201D "
+  - "ilan Cepmek: \u201CEs krimnya masih lama gak ya?\u201D "
+  - "Dilan Cepmek: \u201CAku soalnya harus buru-buru ke tempat lain. Mau shooting
+    buat lagu baru.\u201D"
+  - "\u201CKamu bertanyaaee-tanyaee?\u201D "
+  - "\u201CNah, semangat dengan lagu barunya.\u201D "
+  - "Dilan Cepmek: \u201CWah, terima kasih!\u201D"
+  - 'Aku melihatnya segera bergegas menuju pintu keluar sambil memakan es krim yang
+    baru saja kuberikan.  '
+  - 'Memang nada suaranya terkadang membuat sedikit kesal, tetapi setidaknya senyumannya
+    bisa membuatku bertahan lebih lama lagi di sini.  '
+  part2Lines:
+  - "\u201CSelamat datang di Kocokue, apa yang menjadi order hari ini?\u201D "
+  - "Dilan Cepmek: \u201CKamu nanyaaee? Aku mau es yang itu dong.\u201D "
+  - "\u201CAh maaf, untuk yang itu sedang habis stoknya.\u201D "
+  - "Dilan Cepmek: \u201CNT kadang kadang NT yae. Okeh, kalau begitu aku maunya yang
+    kayak kemarin aja yae.\u201D "
+  - "\u201CEs Cepmek?\u201D "
+  - "Dilan Cepmek: \u201CBukan! Biar aku kasih tahu ya!\u201D "
+  - "\u201CNah, es krimnya. Eh ngomong-ngomong\u2026\u201D"
+  - "\u201CMas Cepmek tumben banget gak pakai jaket.\u201D "
+  - "\u201CLagi mau ngikutin tren OOTD (Outfit of the Day) yae?\u201D"
+  - "Dilan Cepmek: \u201COh nggak\u2026 Emm, lagi dicuci aja, jaketnya.\u201D "
+  - "Lho, bukannya Mas Cepmek ada jaket lain ya\u2026? "
+  - "\u201COh gitu\u2026\u201D "
+  - "Dilan Cepmek: \u201CIya. Asal kamu tahu yaee, jaket yang lainnya juga sedang
+    dicari yae. Rawr.\u201D "
+  - "\u201CDicari..? Karena?\u201D "
+  - "Dilan Cepmek: \u201CKamu nanyaaee? Kamu bertanyaaee-tanyaaee?\u201D "
+  - "\u201CT, Terima kasih.\u201D "
+  - 'Selesainya dari shift-ku, tidak terasa hari pun berubah menjadi malam.  '
+  - "\u201CHuh\u2026 Entah kenapa hari ini Mas Cepmek rada sus.\u201D "
+  - 'Aku menghidupkan HP-ku untuk menonton live yang dikatakan oleh Dilan si Cepmek. '
+  - "Tetapi\u2026 Aku tidak bisa menemukan apa-apa tentang jaketnya. "
+  part3Lines:
+  - 'Kejadian kemarin masih sedikit terngiang di balik benakku.  Tapi, kehidupan
+    harus tetap berjalan.  Lagipula aneh juga kalau aku meminta izin kerja hanya
+    karena terkejut melihat Dilan Cepmek yang tidak memakai jaket Dilan sehingga
+    kini berubah menjadi Ga Pake Jaket Dilan Cepmek.  '
+  - "\u201CSelamat datang di Kocokue\u2013 Oh, Mas Cepmek. Kayak biasa?\u201D  "
+  - 'Ternyata dia sudah menggunakan lagi jaketnya.  '
+  - "Dilan Cepmek: \u201CKamu na\u2013\u201D  "
+  - "\u201COke, ditunggu, ya.\u201D  "
+  - 'Aku memberikan es krim pesanan Dilan Cepmek, dan ia membayarnya lagi seperti
+    biasa. Kali ini, ia duduk sebentar di salah satu kursi kosong yang ada di pojok
+    ruangan.  '
+  - 'Tentu saja aku tidak memperhatikannya lama-lama. Bukan urusanku. Tapi, beberapa
+    pelanggan lain nampak sibuk mengeluarkan ponsel mereka sambil mengambil satu
+    atau dua foto. Bahkan ada beberapa yang mengajaknya memotret.  '
+  - 'Ya sudahlah.  '
+  - 'Tanpa sadar, hari ini sudah berlalu lagi.  '
+  - "Pelanggan: \u201CEhm, permisi, Mas.\u201D  "
+  - 'Pelanggan itu menyerahkan sebuah ponsel kepadaku. Maksudnya dia mau menunjukkan
+    gambar pesanan? Atau apa?  '
+  - "Pelanggan: \u201CTadi HP ini ada di atas meja sana. Mungkin punya pelanggan,
+    ya?\u201D"
+  - 'Pelanggan itu menunjuk ke salah satu meja di pojok ruangan, meja yang ditempati
+    oleh Dilan Cepmek tadi. Aku menyalakan layarnya, namun tak menemukan petunjuk
+    berarti. HP ini juga diberi kata sandi.  '
+  - "\u201CTerima kasih, Mba. Akan kami simpan dahulu sampai pemiliknya kembali.\u201D  "
+  - 'Ternyata masih banyak orang baik. Kalau dia mau, bisa saja ia membawa pergi
+    HP tersebut dan tidak kembali lagi.  '
+  - 'Nah, sekarang. Apakah benar ini HP milik Dilan Cepmek?  '
+  - 'Mungkin saja salah, mungkin saja benar. Tapi mungkin tak ada salahnya kalau
+    aku mencoba menghubunginya melalui media sosialnya. Aku akan mengirimkan dm sambil
+    menyertakan foto HP ini.  '
+  - "\u201CSelamat sore, saya pegawai Kocokue cabang XX tempat biasanya Anda datang.
+    Saya mendapatkan laporan bahwa ada ponsel yang tertinggal, dan seingat saya Andalah
+    yang duduk di sana terakhir kali. Apabila ini benar milik Anda, Anda bisa kembali
+    \u2026.\u201D  "
+  - 'Formal sekali. Akhirnya pelajaran bahasa Indonesiaku berguna.  '
+  - 'Tanpa ragu, aku mengirimkan pesan tersebut layaknya content creator yang ingin
+    mengajak Dilan Cepmek untuk collab.  '
+  - Bisa saja dia menganggap pesan dariku adalah penipuan.
+  - 'Setidaknya, aku sudah mencoba.  '
+  part4Lines:
+  - 'Shift-ku siang ini telah selesai. DM-ku sama sekali masih belum dijawab. '
+  - Kalau dipikir, ya kan HP-nya ada di sini. Tapi aku pikir mungkin ia akan login
+    menggunakan device lain atau semacamnya sehingga dia bisa membaca pesanku.
+  - 'Setelah mencari tahu alamatnya (aku bukan stalker, percayalah), akhirnya aku
+    memutuskan untuk mendatangi alamat tersebut dengan niat baik.  '
+  - 'Jalannya agak sempit, untung aku tidak membawa motor ke sini. '
+  - 'Aku bertanya kepada beberapa orang di sekitar sambil memperlihatkan foto si
+    Dilan Cepmek atau Alif Cepmek itu.  '
+  - 'Awalnya mereka nampak enggan memberitahukan alamat lengkapnya kepadaku. Wajar
+    saja, mungkin mereka takut aku hanyalah salah satu dari penggemar beratnya yang
+    entah akan melakukan apa kalau sampai tahu tempat tinggalnya. Begitu aku menjelaskan
+    bahwa aku berniat mengembalikan HP-nya, barulah mereka bersedia.  '
+  - Begitu sampai di gang yang ditunjukkan oleh warga tadi, hujan mulai turun. Tentunya
+    aku selalu sedia payung sebelum hujan, namun aku tetap tidak suka melihat sepatuku
+    nanti kotor karena lumpur.
+  - Samar-samar dari kejauhan, aku melihat cahaya redup di tengah jemuran-jemuran
+    pakaian yang menggantung di balik atap.
+  - 'Tak lama, aku menemukan si Alif Cepmek dengan satu orang lagi yang tak aku kenali
+    wajahnya.  '
+  - "Dilan Cepmek: \u201CNgapain anying?\u201D"
+  - "???: \u201CKamu nanyaee?\u201D  "
+  - "Dilan Cepmek: \u201CKamu nanyaee, kamu nanyaee, diem anying gue lagi jualan,
+    tolol.\u201D  "
+  - "???: \u201CKamu bertanyaee-tanyaee???\u201D  "
+  - 'Aku terdiam sejenak, menunggu hingga Dilan Cepmek menyelesaikan live-nya pada
+    hari itu. Ia menyadari keberadaanku, memberikan gestur agar aku menunggu sejenak.  '
+  - "Dilan Cepmek: \u201CKenapa, ya? Saya engga lupa bayar es krim\u2019kan?\u201D"
+  - "\u201CEngga. Ini, HP-nya ketinggalan kemaren-kemaren.\u201D  "
+  - 'Dilan Cepmek menatapku sejenak nampak tak percaya, lalu menerima HP-nya. Ia
+    membolak-baliknya sejenak, kemudian menyalakannya untuk memastikan bahwa benar
+    itu miliknya.  '
+  - "Dilan Cepmek: \u201CMakasih banyak, ya. Woi, HP lo udah gak gue butuhin lagi.\u201D "
+  - 'Dilan Cepmek nampak mengotak-atik sejenak HP yang sebelumnya ia gunakan untuk
+    live, sebelum menyerahkannya kepada orang yang tak aku kenal itu.   '
+  - Kepengapan dan kesempitan gang kecil ini bukanlah sesuatu yang mengganjal di
+    hatiku.
+  - "\u201CKalo gitu, saya permisi dulu, ya.\u201D  "
+  - Akhirnya aku memutuskan untuk berpamitan, tidak mengganggu lebih lama lagi.
+  - "Dilan Cepmek: \u201COh iya, sekali lagi makasih banyak, lho!\u201D  "
+  - "Dilan Cepmek: \u201CGatau lagi saya kalo HP ini ga balik gimana.\u201D  "
+  - "\u201CSukses terus, Alif Cepmek.\u201D "
+  - "Dilan Cepmek: \u201CEh kenapa tadi?\u201D  "
+  - "\u201CKamu nanyaee???\u201D"
+  - 'Dilan Cepmek terdiam, sebelum akhirnya tertawa. Aku berpamitan juga dengan orang
+    yang mungkin temannya itu, lalu pergi dan bersiap menghadapi hari-hariku yang
+    biasa lagi.  '
+  - Terkadang, apa yang kita lihat bukanlah apa yang sebenarnya.
+  - Kita manusia hanyalah aktor yang memiliki berbagai panggung di dunia ini.
+  - 'Jadi apa kita di setiap panggung itu, semuanya terserah kepada kita.  '
+  - 'Tak jarang, banyak orang yang membangun perannya sendiri untuk mencari sedikit
+    rezeki.  '
+  - 'Yah, aku sedikit kagum padanya.  '
+--- !u!1 &1510751861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1510751865}
+  - component: {fileID: 1510751864}
+  - component: {fileID: 1510751863}
+  - component: {fileID: 1510751862}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1510751862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510751861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1510751863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510751861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1510751864
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510751861}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1510751865
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510751861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 883069795230635579}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!1 &2040418305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2040418308}
+  - component: {fileID: 2040418307}
+  - component: {fileID: 2040418306}
+  - component: {fileID: 2040418309}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &2040418306
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040418305}
+  m_Enabled: 1
+--- !u!20 &2040418307
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040418305}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 720
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &2040418308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040418305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1280, y: 720, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2040418309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040418305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+--- !u!1 &883069793935095274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883069793935095275}
+  - component: {fileID: 883069793935095277}
+  - component: {fileID: 883069793935095276}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &883069793935095275
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883069793935095274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 883069795230635579}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0075073, y: -0.000038147}
+  m_SizeDelta: {x: 2032.3, y: 338.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &883069793935095276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883069793935095274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Dialogue Box
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 48
+  m_fontSizeBase: 48
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 33.710693, y: 36.812927, z: 39.880615, w: 46.016144}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &883069793935095277
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883069793935095274}
+  m_CullTransparentMesh: 1
+--- !u!1 &883069795230635578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883069795230635579}
+  - component: {fileID: 883069795230635581}
+  - component: {fileID: 883069795230635580}
+  - component: {fileID: 1455948950}
+  m_Layer: 5
+  m_Name: Dialogue Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &883069795230635579
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883069795230635578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 883069793935095275}
+  m_Father: {fileID: 1510751865}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -450}
+  m_SizeDelta: {x: 2032.27, y: 338.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &883069795230635580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883069795230635578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &883069795230635581
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883069795230635578}
+  m_CullTransparentMesh: 1
